@@ -1,3 +1,5 @@
+import Joi from "joi";
+
 export default class Carts {
   constructor(email, timestamp, products, address) {
     this.email = email;
