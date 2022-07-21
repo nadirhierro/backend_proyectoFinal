@@ -12,7 +12,14 @@ const args = yargs.default({
 delete args["_"];
 delete args["$0"];
 
-let config = { container_type: args.container_type };
+let config = {
+  dev: process.env.NODE_ENV !== "production",
+  port: args.port,
+  mode: args.mode,
+  cors: process.env.CORS,
+  container_type: args.container_type,
+  sessionSecret: process.env.SESSION_SECRET,
+};
 
 let db = {
   mongo_atlas: process.env.MONGO_ATLAS,
@@ -20,4 +27,9 @@ let db = {
   advancedOptions: { useNewUrlParser: true, useUnifiedTopology: true },
 };
 
-export { db, config };
+let cryptoConfig = {
+  alogrithm: process.env.CRYPTO_ALGORITHM,
+  secretkey: process.env.CRYPTO_SECRET,
+};
+
+export { db, config, cryptoConfig };
