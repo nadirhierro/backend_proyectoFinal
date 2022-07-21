@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export default class Messages {
-  constructor(author, type, timestamp, message) {
+  constructor(author, type, message) {
     this.author = author;
     this.type = type;
     this.message = message;

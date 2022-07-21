@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export default class Orders {
-  constructor(orderId, timestamp, state, email, products) {
+  constructor(orderId, state, email, products) {
     this.orderId = orderId;
     this.state = state;
     this.email = email;

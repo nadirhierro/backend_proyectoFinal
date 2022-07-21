@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 export default class Carts {
-  constructor(email, timestamp, products, address) {
+  constructor(email, products, address) {
     this.email = email;
     this.products = products;
     this.address = address;
