@@ -4,7 +4,6 @@ export default class Messages {
   constructor(author, type, timestamp, message) {
     this.author = author;
     this.type = type;
-    this.timestamp = timestamp;
     this.message = message;
   }
   // Valdiación de la data
@@ -15,7 +14,6 @@ export default class Messages {
         alias: Joi.string().required(),
       }).required(),
       type: Joi.string().required(),
-      timestamp: Joi.date().timestamp().required(),
       message: Joi.string().required(),
     });
     const { error } = messageSchema.validate(message);
