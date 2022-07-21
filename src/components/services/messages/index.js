@@ -29,7 +29,7 @@ export default class apiMessages {
     }
   }
 
-  async getMessage(email) {
+  async getMessagesByEmail(email) {
     try {
       let messages = await this.db.getMessagesByEmail(email);
       return messages;

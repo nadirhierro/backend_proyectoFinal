@@ -1,8 +1,7 @@
 import Joi from "joi";
 
 export default class Orders {
-  constructor(orderId, state, email, products) {
-    this.orderId = orderId;
+  constructor(state, email, products) {
     this.state = state;
     this.email = email;
     this.products = products;
@@ -10,7 +9,6 @@ export default class Orders {
   // Valdiación de la data
   static validate(order, required) {
     const orderSchema = Joi.object({
-      orderId: required ? Joi.number().required() : Joi.number(),
       state: required
         ? Joi.string().valid("generated", "in process").required()
         : Joi.string().valid("generated", "in process"),

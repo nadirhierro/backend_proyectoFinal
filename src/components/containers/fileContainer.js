@@ -57,8 +57,8 @@ export default class fileContainer {
       let objInData = data.find((element) => element.id == obj.id);
       if (objInData) {
         let newObject = {
-          timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
           ...obj,
+          timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
         };
         data.splice(data.indexOf(objInData), 1, newObject);
         await this.write(data);

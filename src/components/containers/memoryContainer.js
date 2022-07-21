@@ -30,8 +30,8 @@ export default class memoryContainer {
     );
     if (objInContainer) {
       let newObject = {
-        timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
         ...obj,
+        timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
       };
       this.container.splice(
         this.container.indexOf(objInContainer),

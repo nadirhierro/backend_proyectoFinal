@@ -36,7 +36,7 @@ export default class mongodbContainer {
     try {
       const res = await this.model.updateOne(
         { _id: obj.id },
-        { timestamp: moment().format("DD/MM/YYYY HH:MM:SS"), ...obj }
+        { ...obj, timestamp: moment().format("DD/MM/YYYY HH:MM:SS") }
       );
       if (res.matchedCount > 0) {
         return res;

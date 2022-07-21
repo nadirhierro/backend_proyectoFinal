@@ -28,6 +28,15 @@ export default class apiProducts {
     }
   }
 
+  async getProductsByCategory(category) {
+    try {
+      let products = await this.db.getProductsByCategory(category);
+      return products;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   async getProductById(id) {
     try {
       let product = await this.db.getById(id);

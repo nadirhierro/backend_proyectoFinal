@@ -1,0 +1,32 @@
+import apiOrders from "../../services/orders/index.js";
+
+let service = new apiOrders();
+
+export default class OrdersController {
+  constructor() {}
+
+  async getOrders(req, res, next) {
+    try {
+      let orders = await service.getOrders();
+      res.json(orders);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
+  async saveOrder(req, res, next) {
+    try {
+      let user = req.user;
+      let products = req.body;
+      let order = {
+        email: user[0].email,
+        state: "in process",
+        products: products,
+      };
+      let saved = await service.saveOrder(order);
+      res.json(saved);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+}
