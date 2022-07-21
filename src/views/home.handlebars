@@ -1,0 +1,106 @@
+<header>
+  <!-- Nav de Bootstrap -->
+  <nav class="navbar navbar-expand-lg fixed-top header--nav">
+    <div class="container-fluid">
+      <a href="./">
+        <img
+          class="navbar-brand animate__animated animate__fadeIn"
+          src="./assets/img/logoChico.png"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse linksNav" id="navbarNav">
+        <ul
+          class="navbar-nav w-100 justify-content-around animate__animated animate__fadeIn"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              href="./index.html"
+            >Tienda</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link animate__animated animate__fadeIn"
+              href="#nosotros"
+            >Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link animate__animated animate__fadeIn"
+              href="#ubicacion"
+            >Ubicación</a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link animate__animated animate__fadeIn"
+              href="#contacto"
+            >Contacto</a>
+          </li>
+          <li class="nav-item nav-itemCarrito">
+            <a
+              class="nav-link animate__animated animate__fadeIn carritoIconCaja"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling"
+              aria-controls="offcanvasScrolling"
+            >
+              <img
+                src="./assets/img/carrito/carrito.png"
+                alt=""
+                class="carritoIcon"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="main">
+  <div class="notificacionContainer"></div>
+  <div class="container-fluid hero">
+    <div class="row justify-content-center">
+      <div
+        class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4 cajaHeroLogo animate__animated animate__fadeIn"
+      >
+        <img
+          class="img-fluid heroLogo"
+          src="./assets/img/logo_white_large.png"
+          alt="Logo Sincopado"
+        />
+        <p class="heroLema">Siempre la mejor atención</p>
+      </div>
+      <div
+        class="col-12 col-md-12 col-md-6 col-lg-6 col-xl-4 texto animate__animated animate__fadeIn bienvenida pt-5"
+      >
+        <h2>Bienvenido a nuestra tienda</h2>
+        <p>
+          ¡Aprovechá todos nuestros productos con 18 cuotas sin interés!
+        </p>
+      </div>
+    </div>
+    <div class="row user justify-content-center">
+      <div class="col-12 d-flex flex-column align-items-center w-25">
+        <h4>Usuario: {{name}}</h4>
+        <p>Mail: {{email}}</p>
+        <img src={{thumbnail}} class="img-fluid avatar p-2" />
+        <a
+          href="http://localhost:8080/logout"
+          class="btn btn-primary logout"
+        >Logout</a>
+      </div>
+    </div>
+  </div>
+
+</main>
