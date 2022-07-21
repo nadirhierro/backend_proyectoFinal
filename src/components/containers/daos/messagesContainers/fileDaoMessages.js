@@ -15,4 +15,18 @@ export default class fileDaoMessages extends fileContainer {
     }
     return instance;
   }
+
+  async getMessagesByEmail(email) {
+    try {
+      let all = await this.getAll();
+      let filteredByEmail = all.filter((message) => (message.email = email));
+      if (filteredByEmail.length > 0) {
+        return filteredByEmail;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }

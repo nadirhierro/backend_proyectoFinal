@@ -15,7 +15,7 @@ export default class memoryDaoUsers extends memoryContainer {
     return instance;
   }
 
-  getUser(email) {
+  getUserByEmail(email) {
     let user = this.container.find((user) => user.email == email);
     if (user) {
       return user;

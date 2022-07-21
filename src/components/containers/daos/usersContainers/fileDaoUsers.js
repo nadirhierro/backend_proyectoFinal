@@ -16,7 +16,7 @@ export default class fileDaoUsers extends fileContainer {
     return instance;
   }
 
-  async getUser(email) {
+  async getUserByEmail(email) {
     try {
       let users = await this.getAll();
       let user = users.find((user) => (user.email = email));

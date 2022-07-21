@@ -25,23 +25,28 @@ export default class Users {
     this.isAdmin = isAdmin;
   }
   // Valdiación de la data
-  static validate(user) {
+  static validate(user, required) {
     const userSchema = Joi.object({
-      email: Joi.email().required(),
-      password: Joi.object({
-        iv: Joi.string().required(),
-        content: Joi.string().required(),
-      }).required(),
-      name: Joi.string().required(),
-      surname: Joi.string().required(),
-      alias: Joi.string().required(),
-      address: Joi.string().required(),
-      phone: Joi.number().required(),
-      age: Joi.number().required(),
-      avatar: Joi.string().required(),
-      isAdmin: Joi.boolean().required(),
+      email: required ? Joi.email().required() : Joi.email(),
+      password: required
+        ? Joi.object({
+            iv: Joi.string().required(),
+            content: Joi.string().required(),
+          }).required()
+        : Joi.object({
+            iv: Joi.string(),
+            content: Joi.string(),
+          }),
+      name: required ? Joi.string().required() : Joi.string(),
+      surname: required ? Joi.string().required() : Joi.string(),
+      alias: required ? Joi.string().required() : Joi.string(),
+      address: required ? Joi.string().required() : Joi.string(),
+      phone: required ? Joi.number().required() : Joi.number(),
+      age: required ? Joi.number().required() : Joi.number(),
+      avatar: required ? Joi.string().required() : Joi.string(),
+      isAdmin: required ? Joi.boolean().required() : Joi.boolean(),
     });
-    const { error } = userSchema.validate(message);
+    const { error } = userSchema.validate(user);
     if (error) {
       throw error;
     }

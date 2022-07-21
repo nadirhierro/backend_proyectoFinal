@@ -17,7 +17,7 @@ export default class mongodbDaoUsers extends mongodbContainer {
     return instance;
   }
 
-  async getUser(email) {
+  async getUserByEmail(email) {
     try {
       let user = await this.model.find({ email: email });
       if (user) {

@@ -14,4 +14,14 @@ export default class memoryDaoMessages extends memoryContainer {
     }
     return instance;
   }
+
+  async getMessagesByEmail(email) {
+    let all = this.getAll();
+    let filteredByEmail = all.filter((message) => (message.email = email));
+    if (filteredByEmail.length > 0) {
+      return filteredByEmail;
+    } else {
+      return false;
+    }
+  }
 }

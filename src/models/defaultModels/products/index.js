@@ -35,7 +35,7 @@ export default class Products {
       thumbnail: required ? Joi.string().required() : Joi.string(),
       stock: required ? Joi.number().required() : Joi.string(),
     });
-    const { error } = productSchema.validate(message);
+    const { error } = productSchema.validate(product);
     if (error) {
       throw error;
     }
