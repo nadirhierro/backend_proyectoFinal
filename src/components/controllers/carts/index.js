@@ -5,6 +5,25 @@ let service = new apiCarts();
 export default class CartsController {
   constructor() {}
 
+  async getAllCarts(req, res, next) {
+    try {
+      let carts = await service.getAllCarts();
+      res.json(carts);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
+  async getCartById(req, res, next) {
+    try {
+      let { id } = req.params;
+      let cart = await service.getCartById(id);
+      res.json(cart);
+    } catch (err) {
+      res.json(err);
+    }
+  }
+
   async saveCart(req, res, next) {
     try {
       let user = await req.user;

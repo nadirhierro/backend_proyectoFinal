@@ -19,7 +19,16 @@ export default class apiCarts {
     }
   }
 
-  async getCart(id) {
+  async getAllCarts() {
+    try {
+      let carts = await this.db.getAll();
+      return carts;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async getCartById(id) {
     try {
       let cart = await this.db.getById(id);
       return cart;
