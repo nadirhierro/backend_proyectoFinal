@@ -22,7 +22,9 @@ if (config.mode == "FORK") {
       cluster.fork();
     });
   } else {
-    httpServer.listen(config.port, () => {});
-    console.log(`Escuchando en puerto ${config.port} || Worker ${process.pid}`);
+    httpServer.listen(PORT, HOST, () => {});
+    console.log(
+      `Escuchando en http://${HOST}:${PORT} || Worker ${process.pid}`
+    );
   }
 }
