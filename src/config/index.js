@@ -11,6 +11,7 @@ const args = yargs.default({
   mode: process.env.MODE,
   port: process.env.PORT,
   host: process.env.HOST,
+  admin_mail: process.env.ADMIN_MAIL,
 }).argv;
 delete args["_"];
 delete args["$0"];
@@ -36,4 +37,12 @@ let cryptoConfig = {
   secretkey: process.env.CRYPTO_SECRET,
 };
 
-export { db, config, cryptoConfig };
+let mail = {
+  host: process.env.MAILER_HOST,
+  port: process.env.MAILER_PORT,
+  user: process.env.MAILER_USER,
+  pass: process.env.MAILER_PASS,
+  adminMail: args.adminMail,
+};
+
+export { db, config, cryptoConfig, mail };

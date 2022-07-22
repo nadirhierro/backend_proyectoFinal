@@ -1,6 +1,8 @@
 import apiOrders from "../../services/orders/index.js";
+import mailService from "../../../services/mailer/index.js";
 
 let service = new apiOrders();
+let mailer = new mailService();
 
 export default class OrdersController {
   constructor() {}
@@ -24,6 +26,10 @@ export default class OrdersController {
         products: products,
       };
       let saved = await service.saveOrder(order);
+      if (saved) {
+        let mailToUser = await mailer.newOrder(user, products);
+        let mailToAdmin = await mailer.newOrderToAdmin(user, products);
+      }
       res.json(saved);
     } catch (err) {
       res.json(err);
