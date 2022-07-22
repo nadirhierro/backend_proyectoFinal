@@ -12,6 +12,7 @@ const args = yargs.default({
   port: process.env.PORT,
   host: process.env.HOST,
   admin_mail: process.env.ADMIN_MAIL,
+  admin_phone: process.env.ADMIN_PHONE,
 }).argv;
 delete args["_"];
 delete args["$0"];
@@ -45,4 +46,10 @@ let mail = {
   adminMail: args.adminMail,
 };
 
-export { db, config, cryptoConfig, mail };
+let twilioConfig = {
+  sid: process.env.TWILIO_SID,
+  token: process.env.TWILIO_TOKEN,
+  adminPhone: args.admin_phone,
+};
+
+export { db, config, cryptoConfig, mail, twilioConfig };
