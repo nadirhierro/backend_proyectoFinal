@@ -1,4 +1,4 @@
-import daoFactory from "../containers/daos/index.js";
+import daoFactory from "../../containers/daos/index.js";
 import Carts from "../../../models/defaultModels/carts/index.js";
 
 let factory = new daoFactory();

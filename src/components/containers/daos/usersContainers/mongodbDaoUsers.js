@@ -1,5 +1,5 @@
 import mongodbContainer from "../../mongodbContainer.js";
-import { userModel } from "../../../../models/index.js";
+import { userModel } from "../../../../models/mongodb/index.js";
 
 let instance = null;
 
@@ -19,7 +19,7 @@ export default class mongodbDaoUsers extends mongodbContainer {
 
   async getUserByEmail(email) {
     try {
-      let user = await this.model.find({ email: email });
+      let user = await this.model.findOne({ email: email });
       if (user) {
         return user;
       } else {

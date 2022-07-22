@@ -7,10 +7,11 @@ const users = new apiUsers();
 
 passport.use(
   "login",
-  new LocalStrategy(async (username, password, done) => {
+  new LocalStrategy(async (email, password, done) => {
     try {
-      let user = await users.getUser(username);
+      let user = await users.getUserByEmail(email);
       if (!user) return done(null, false);
+      console.log(user);
       if (decrypt(user.password) !== password) return done(null, false);
       return done(null, user);
     } catch (err) {
@@ -63,7 +64,7 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((email, done) => {
-  let user = users.getUser(email);
+  let user = users.getUserByEmail(email);
   done(null, user);
 });
 

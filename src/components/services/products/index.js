@@ -22,6 +22,7 @@ export default class apiProducts {
   async getProducts() {
     try {
       let all = await this.db.getAll();
+      console.log(all);
       return all;
     } catch (err) {
       console.log(err);

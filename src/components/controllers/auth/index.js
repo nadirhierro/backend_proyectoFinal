@@ -28,9 +28,9 @@ export default class AuthController {
     try {
       let user = await req.user;
       res.render("home", {
-        name: user[0].name,
-        thumbnail: user[0].avatar,
-        email: user[0].email,
+        name: user.name,
+        thumbnail: user.avatar,
+        email: user.email,
       });
     } catch (err) {
       console.log(err);
@@ -42,7 +42,7 @@ export default class AuthController {
       let user = await req.user;
       req.session.destroy((err) => {
         if (!err) {
-          res.render("logout", { name: user[0].name });
+          res.render("logout", { name: user.name });
         } else {
           res.send({ status: "logout ERROR", body: err });
         }

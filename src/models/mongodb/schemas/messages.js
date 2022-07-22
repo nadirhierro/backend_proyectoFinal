@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 let author = Joi.object({
-  email: Joi.email().required(),
+  email: Joi.string().email().required(),
   alias: Joi.string().required(),
 }).required();
 let type = Joi.string().required();

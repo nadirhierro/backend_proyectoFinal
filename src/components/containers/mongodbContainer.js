@@ -8,11 +8,7 @@ export default class mongodbContainer {
   async getAll() {
     try {
       let all = await this.model.find({});
-      if (all.matchedCount > 0) {
-        return all;
-      } else {
-        return [];
-      }
+      return all;
     } catch (err) {
       console.log(err);
     }

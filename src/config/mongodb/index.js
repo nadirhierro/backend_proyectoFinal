@@ -6,10 +6,7 @@ const MONGO_ATLAS = `${db.mongo_atlas}`;
 let connection;
 (async () => {
   try {
-    connection = await mongoose.connect(MONGO_ATLAS, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    connection = await mongoose.connect(MONGO_ATLAS, db.advancedOptions);
   } catch (error) {
     console.log(error);
   }

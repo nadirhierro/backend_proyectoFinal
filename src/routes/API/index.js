@@ -11,6 +11,6 @@ let routerApi = new Router();
 routerApi.use("/carts", routerCarts);
 routerApi.use("/messages", routerMessages);
 routerApi.use("/orders", routerOrders);
-routerApi.use("/routerProducts", routerProducts);
+routerApi.use("/products", routerProducts);
 
 export default routerApi;

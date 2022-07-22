@@ -285,7 +285,6 @@ const agregarCarrito = function (event) {
       calcularTotal("sumar", producto.price); // lo sumo al total
       actualizarTotal(precioTotal); // actualizo el total en el DOM carrito
       refreshContador("sumar"); // refresh al contador
-      console.log(producto);
       notificar("sumar", producto, 1);
       calcularCuotas();
       // me fijo si el tag es DIV (de la grilla productos) para en tal caso agregarle animación
@@ -304,7 +303,6 @@ const agregarCarrito = function (event) {
         stock: producto.stock,
         quantity: producto.quantity,
       };
-      console.log(productObject);
       let productoAagregar = carrito.find(
         (producto) => producto.code == productoID
       ); // me fijo si ya está en el carrito
@@ -314,13 +312,11 @@ const agregarCarrito = function (event) {
         refreshLocalStorage(carrito); // refresh al LocalStorage
         renderizarEnCarrito(producto); // renderizo producto en DOM carrito
         escucharBotones(); // escucho botones
-        console.log(carrito);
       } else {
         // si el producto ya está en el carrito
         refreshCarritoArray(productObject, productoAagregar); // refresh al array
         refreshLocalStorage(carrito); // refresh al LocalStorage
         refreshPrecioCantidad(producto); // refresh a la cantidad y precio en DOM carrito
-        console.log(carrito);
       }
     } else if (producto.code == productoID && producto.stock === 0) {
       alert("No hay Stock");
