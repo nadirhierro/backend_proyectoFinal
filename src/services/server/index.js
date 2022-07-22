@@ -14,6 +14,7 @@ const app = express();
 const httpServer = createServer(app);
 
 const PORT = config.port;
+const HOST = config.host;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -64,4 +65,4 @@ app.use("*", (req, res, next) => {
 // Inicio Socket
 initSocket(httpServer);
 
-export { httpServer, PORT };
+export { httpServer, PORT, HOST };
