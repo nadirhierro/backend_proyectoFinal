@@ -27,7 +27,7 @@ export default class Users {
   // Valdiación de la data
   static validate(user, required) {
     const userSchema = Joi.object({
-      email: required ? Joi.email().required() : Joi.email(),
+      email: required ? Joi.string().email().required() : Joi.email(),
       password: required
         ? Joi.object({
             iv: Joi.string().required(),

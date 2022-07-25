@@ -29,13 +29,13 @@ export default class CartsController {
       let user = await req.user;
       let products = req.body;
       let cart = {
-        email: user[0].email,
+        email: user.email,
         products: products,
-        address: user[0].address,
+        address: user.address,
       };
       let saved = await service.saveCart(cart);
       if (saved) {
-        res.json({ cart: create, email: user[0].name });
+        res.json({ cart: saved });
       } else {
         res.json({ error: saved });
       }

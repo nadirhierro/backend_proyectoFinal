@@ -8,7 +8,7 @@ export default class apiProducts {
     this.db = factory.createProductsDaoDB();
   }
 
-  static getValidation(product, required) {
+  getValidation(product, required) {
     try {
       Products.validate(product, required);
     } catch (err) {

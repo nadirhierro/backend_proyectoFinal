@@ -8,7 +8,7 @@ export default class apiUsers {
     this.db = factory.createUsersDaoDB();
   }
 
-  static getValidation(user, required) {
+  getValidation(user, required) {
     try {
       Users.validate(user, required);
     } catch (err) {

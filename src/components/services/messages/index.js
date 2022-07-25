@@ -8,7 +8,7 @@ export default class apiMessages {
     this.db = factory.createMessagesDaoDB();
   }
 
-  static getValidation(message) {
+  getValidation(message) {
     try {
       Messages.validate(message);
     } catch (err) {

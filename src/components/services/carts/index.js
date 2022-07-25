@@ -1,20 +1,23 @@
 import daoFactory from "../../containers/daos/index.js";
 import Carts from "../../../models/defaultModels/carts/index.js";
+import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
+
+let logger = Logger.getInstance();
 
 export default class apiCarts {
   constructor() {
     this.db = factory.createCartsDaoDB();
   }
 
-  static getValidation(cart, required) {
+  getValidation(cart, required) {
     try {
       Carts.validate(cart, required);
     } catch (err) {
+      logger.logWrongData(err);
       throw new Error(
-        "El mensaje posee un formato inválido o falta información" +
-          err.details[0].message
+        "El mensaje posee un formato inválido o falta información" + err
       );
     }
   }

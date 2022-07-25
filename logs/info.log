@@ -1,0 +1,55 @@
+[2022-07-24T20:57:12.014] [INFO] custom - Path: /, Method: GET
+[2022-07-24T20:57:12.336] [INFO] custom - Path: /home, Method: GET
+[2022-07-24T20:57:12.990] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-24T20:57:18.538] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T20:57:52.597] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T20:58:18.169] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T20:58:36.196] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T20:58:59.273] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T20:59:34.428] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T20:59:48.943] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T21:00:00.326] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T21:00:21.595] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T21:00:32.127] [INFO] custom - Path: /home, Method: GET
+[2022-07-24T21:00:32.714] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-24T21:00:36.163] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-24T21:01:44.620] [INFO] custom - Path: /api/carts, Method: GET
+[2022-07-25T19:22:37.109] [INFO] custom - Path: /, Method: GET
+[2022-07-25T19:22:40.111] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T19:26:36.800] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:26:53.487] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:27:11.776] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:27:32.336] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:28:41.184] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:29:07.684] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:29:57.910] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:30:10.240] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:31:34.472] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:31:45.128] [INFO] custom - Path: /, Method: GET
+[2022-07-25T19:31:45.530] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T19:31:46.640] [INFO] custom - Path: /login, Method: GET
+[2022-07-25T19:31:46.809] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T19:31:55.431] [INFO] custom - Path: /login, Method: POST
+[2022-07-25T19:31:56.026] [INFO] custom - Path: /home, Method: GET
+[2022-07-25T19:31:56.455] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T19:32:09.646] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:33:19.098] [INFO] custom - Path: /assets/styles/main.css.map, Method: GET
+[2022-07-25T19:39:19.373] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:42:27.542] [INFO] custom - Path: /home, Method: GET
+[2022-07-25T19:42:28.026] [INFO] custom - Path: /assets/styles/main.css.map, Method: GET
+[2022-07-25T19:42:28.330] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T19:42:30.226] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:42:30.229] [INFO] custom - Error: TypeError: Joi.email is not a function
+[2022-07-25T19:43:03.504] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:43:03.508] [INFO] custom - Error: TypeError: Joi.email is not a function
+[2022-07-25T19:45:20.130] [INFO] custom - Path: /home, Method: GET
+[2022-07-25T19:45:20.518] [INFO] custom - Path: /assets/styles/main.css.map, Method: GET
+[2022-07-25T19:45:20.693] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T19:45:23.312] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:45:23.318] [INFO] custom - Error: ValidationError: "email" is required
+[2022-07-25T19:45:57.475] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:45:57.568] [INFO] custom - Error: ValidationError: "address" failed custom validation because Cannot read properties of undefined (reading 'presence')
+[2022-07-25T19:47:28.808] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:47:37.829] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:48:23.293] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T19:48:46.390] [INFO] custom - Path: /api/carts, Method: POST

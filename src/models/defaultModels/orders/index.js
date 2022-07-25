@@ -12,7 +12,7 @@ export default class Orders {
       state: required
         ? Joi.string().valid("generated", "in process").required()
         : Joi.string().valid("generated", "in process"),
-      email: required ? Joi.email().required() : Joi.email(),
+      email: required ? Joi.string().email().required() : Joi.string().email(),
       products: required
         ? Joi.array()
             .items(Joi.object({ _id: Joi.string(), quantity: Joi.number() }))

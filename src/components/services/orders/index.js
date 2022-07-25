@@ -8,7 +8,7 @@ export default class apiOrders {
     this.db = factory.createOrdersDaoDB();
   }
 
-  static getValidation(order, required) {
+  getValidation(order, required) {
     try {
       Orders.validate(order, required);
     } catch (err) {

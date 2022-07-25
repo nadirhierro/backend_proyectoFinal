@@ -10,7 +10,7 @@ export default class Messages {
   static validate(message) {
     const messageSchema = Joi.object({
       author: Joi.object({
-        email: Joi.email().required(),
+        email: Joi.string().email().required(),
         alias: Joi.string().required(),
       }).required(),
       type: Joi.string().required(),

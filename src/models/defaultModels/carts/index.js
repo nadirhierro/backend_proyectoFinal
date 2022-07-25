@@ -9,7 +9,7 @@ export default class Carts {
   // Valdiación de la data
   static validate(cart, required) {
     const cartSchema = Joi.object({
-      email: required ? Joi.email().required() : Joi.email(),
+      email: required ? Joi.string().email().required() : Joi.string().email(),
       products: required
         ? Joi.array()
             .items(Joi.object({ _id: Joi.string(), quantity: Joi.number() }))
@@ -17,7 +17,7 @@ export default class Carts {
         : Joi.array().items(
             Joi.object({ _id: Joi.string(), quantity: Joi.number() })
           ),
-      address: required ? Joi.string().required : Joi.string(),
+      address: required ? Joi.string().required() : Joi.string(),
     });
     const { error } = cartSchema.validate(cart);
     if (error) {

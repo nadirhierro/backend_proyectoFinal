@@ -9,9 +9,12 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
 import MongoStore from "connect-mongo";
+import Logger from "../../utils/logger/index.js";
 
 const app = express();
 const httpServer = createServer(app);
+
+let logger = Logger.getInstance();
 
 const PORT = config.port;
 const HOST = config.host;
@@ -51,7 +54,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(logger.logRequests);
 // Router
 app.use("/", router);
 
