@@ -82,14 +82,6 @@ export default class AuthController {
     })(req, res, next);
   }
 
-  failLogin(req, res, next) {
-    res.render("faillogin");
-  }
-
-  failSignup(req, res, next) {
-    res.render("failsignup");
-  }
-
   uploadAvatar() {
     upload.single("avatar");
   }

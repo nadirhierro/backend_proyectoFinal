@@ -21,8 +21,4 @@ routerHome.post("/signup", auth.uploadAvatar, auth.makeSignup);
 
 routerHome.get("/home", auth.isAuth, auth.goHome);
 
-routerHome.get("/faillogin", auth.failLogin);
-
-routerHome.get("/failsignup", auth.failSignup);
-
 export default routerHome;
