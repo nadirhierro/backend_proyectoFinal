@@ -15,10 +15,8 @@ export default class apiCarts {
     try {
       Carts.validate(cart, required);
     } catch (err) {
-      logger.logWrongData(err);
-      throw new Error(
-        "El mensaje posee un formato inválido o falta información" + err
-      );
+      logger.logWrongData(err.details[0].message);
+      throw err.details[0].message;
     }
   }
 
@@ -27,7 +25,7 @@ export default class apiCarts {
       let carts = await this.db.getAll();
       return carts;
     } catch (err) {
-      console.log(err);
+      console.log("hola");
     }
   }
 
@@ -46,7 +44,7 @@ export default class apiCarts {
       let saved = await this.db.save(cart);
       return saved;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 

@@ -53,3 +53,74 @@
 [2022-07-25T19:47:37.829] [INFO] custom - Path: /api/carts, Method: POST
 [2022-07-25T19:48:23.293] [INFO] custom - Path: /api/carts, Method: POST
 [2022-07-25T19:48:46.390] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:01:05.837] [INFO] custom - Path: /home, Method: GET
+[2022-07-25T20:01:06.562] [INFO] custom - Path: /assets/styles/main.css.map, Method: GET
+[2022-07-25T20:01:07.440] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T20:01:09.254] [INFO] custom - Path: /login, Method: GET
+[2022-07-25T20:01:09.481] [INFO] custom - Path: /assets/styles/main.css.map, Method: GET
+[2022-07-25T20:01:09.666] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T20:01:19.988] [INFO] custom - Path: /login, Method: POST
+[2022-07-25T20:01:20.768] [INFO] custom - Path: /home, Method: GET
+[2022-07-25T20:01:21.195] [INFO] custom - Path: /assets/styles/main.css.map, Method: GET
+[2022-07-25T20:01:21.321] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T20:01:52.478] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:03:11.807] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:03:11.888] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:05:03.003] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:05:22.748] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:05:22.799] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:06:44.918] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:06:51.451] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:06:51.535] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:07:29.559] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:07:29.731] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:07:54.203] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:07:54.282] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:08:09.714] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:08:09.889] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:08:54.788] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:08:54.837] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:09:35.927] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:09:35.980] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:10:58.725] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:10:58.768] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:12:27.777] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:12:27.835] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:13:37.050] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:13:37.111] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:14:07.453] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:14:07.498] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:14:47.753] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:14:47.798] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:16:29.283] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:16:45.769] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:17:14.384] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:17:26.801] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:18:05.193] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:18:40.039] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:24:47.227] [INFO] custom - Path: /, Method: GET
+[2022-07-25T20:24:47.376] [INFO] custom - Path: /home, Method: GET
+[2022-07-25T20:24:47.838] [INFO] custom - Path: /favicon.ico, Method: GET
+[2022-07-25T20:25:04.796] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:25:34.806] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:25:34.894] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:26:21.683] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:26:21.854] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:27:43.452] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:27:43.534] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:28:18.514] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:28:18.597] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:29:25.833] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:29:25.915] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:29:56.002] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:29:56.069] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:31:06.282] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:31:06.453] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:31:26.890] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:31:26.986] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:32:22.170] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:32:22.244] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:33:35.976] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:33:36.037] [INFO] custom - Error: ValidationError: "products[0]" must be of type object
+[2022-07-25T20:34:15.946] [INFO] custom - Path: /api/carts, Method: POST
+[2022-07-25T20:34:16.036] [INFO] custom - Error: "products[0]" must be of type object

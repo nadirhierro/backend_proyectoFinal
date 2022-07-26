@@ -26,7 +26,8 @@ export default class fileDaoUsers extends fileContainer {
         return false;
       }
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 }

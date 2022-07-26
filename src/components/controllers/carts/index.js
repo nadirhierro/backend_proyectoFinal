@@ -40,7 +40,7 @@ export default class CartsController {
         res.json({ error: saved });
       }
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 

@@ -1,9 +1,11 @@
 import * as fs from "node:fs";
 import moment from "moment";
+import Logger from "../../utils/logger/index.js";
 
 export default class fileContainer {
   constructor(fileName) {
     this.fileName = fileName;
+    this.logger = Logger.getInstance();
   }
 
   async write(data) {
@@ -13,7 +15,8 @@ export default class fileContainer {
         `${JSON.stringify(data, null, 2)}`
       );
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -26,7 +29,8 @@ export default class fileContainer {
         return [];
       }
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -47,7 +51,8 @@ export default class fileContainer {
       await this.write(data);
       return newObject;
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -67,7 +72,8 @@ export default class fileContainer {
         return false;
       }
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -81,7 +87,8 @@ export default class fileContainer {
         return false;
       }
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -96,7 +103,8 @@ export default class fileContainer {
         return false;
       }
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -104,7 +112,8 @@ export default class fileContainer {
     try {
       await this.write([]);
     } catch (err) {
-      return err;
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 }

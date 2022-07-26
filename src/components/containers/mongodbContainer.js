@@ -1,8 +1,10 @@
 import moment from "moment";
+import Logger from "../../utils/logger/index.js";
 
 export default class mongodbContainer {
   constructor(model) {
     this.model = model;
+    this.logger = Logger.getInstance();
   }
 
   async getAll() {
@@ -10,7 +12,8 @@ export default class mongodbContainer {
       let all = await this.model.find({});
       return all;
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -24,7 +27,8 @@ export default class mongodbContainer {
       let saveObj = await objModel.save();
       return saveObj;
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -40,7 +44,8 @@ export default class mongodbContainer {
         return false;
       }
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -53,7 +58,8 @@ export default class mongodbContainer {
         return false;
       }
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -66,7 +72,8 @@ export default class mongodbContainer {
         return false;
       }
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 
@@ -75,7 +82,8 @@ export default class mongodbContainer {
       let allDeleted = await this.model.remove({});
       return allDeleted;
     } catch (err) {
-      console.log(err);
+      this.logger.logDatabaseError(err);
+      throw err;
     }
   }
 }

@@ -14,4 +14,12 @@ export default class Logger {
     logger.info(`Path: ${req.path}, Method: ${req.method}`);
     next();
   }
+
+  logWrongData(err) {
+    logger.info(`Error: ${err}`);
+  }
+
+  logDatabaseError(err) {
+    logger.error(`DATABASE ERROR: ${err}`);
+  }
 }
