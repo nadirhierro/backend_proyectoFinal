@@ -10,7 +10,9 @@ passport.use(
   new LocalStrategy(async (email, password, done) => {
     try {
       let user = await users.getUserByEmail(email);
-      if (!user) return done(null, false, { message: "Usuario inexistente" });
+      if (!user) {
+        return done(null, false, { message: "Usuario inexistente" });
+      }
       if (decrypt(user.password) !== password)
         return done(null, false, { message: "Contraseña incorrecta" });
       return done(null, user);

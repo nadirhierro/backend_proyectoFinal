@@ -53,18 +53,32 @@ export default class AuthController {
   }
 
   makeLogin(req, res, next) {
-    passport.authenticate("login", {
-      successRedirect: "home",
-      failureRedirect: "faillogin",
-      failureMessage: true,
+    passport.authenticate("login", function (err, user, info) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) return res.render("faillogin", { message: info.message });
+      req.login(user, function (err) {
+        if (err) {
+          return next(err);
+        }
+        return res.redirect("/home");
+      });
     })(req, res, next);
   }
 
   makeSignup(req, res, next) {
-    passport.authenticate("signup", {
-      successRedirect: "home",
-      failureRedirect: "failsignup",
-      failureMessage: true,
+    passport.authenticate("signup", function (err, user, info) {
+      if (err) {
+        return next(err);
+      }
+      if (!user) return res.render("failsignup", { message: info.message });
+      req.login(user, function (err) {
+        if (err) {
+          return next(err);
+        }
+        return res.redirect("/home");
+      });
     })(req, res, next);
   }
 
