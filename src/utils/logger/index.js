@@ -21,6 +21,12 @@ export default class Logger {
   }
 
   logDatabaseError(err) {
+    logger.info(`DATABASE ERROR: ${err}`);
     logger.error(`DATABASE ERROR: ${err}`);
+  }
+
+  logServiceError(which, err) {
+    logger.info(`SERVICE ERROR -- ${which} -- ${err}`);
+    logger.error(`SERVICE ERROR -- ${which} -- ${err}`);
   }
 }

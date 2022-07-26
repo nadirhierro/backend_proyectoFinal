@@ -1,11 +1,13 @@
 import twilio from "twilio";
 import { twilioConfig } from "../config/index.js";
+import Logger from "../../utils/logger/index.js";
 
 export default class twilioService {
   constructor() {
     this.sid = twilioConfig.sid;
     this.token = twilioConfig.token;
     this.client = twilio(this.sid, this.token);
+    this.logger = Logger.getInstance();
   }
 
   async sendMessage(body, to) {
@@ -15,9 +17,8 @@ export default class twilioService {
         from: "whatsapp:+16573009784",
         to: `whatsapp:${to}`,
       });
-      console.log(message);
     } catch (err) {
-      console.log(err);
+      this.logger.logServiceError();
     }
   }
 
@@ -26,7 +27,7 @@ export default class twilioService {
       await this.sendMessage("New order", adminPhone);
       await this.sendMessage("New order in process", userPhone);
     } catch (err) {
-      console.log(err);
+      this.logger.logServiceError("Twilio", err);
     }
   }
 }

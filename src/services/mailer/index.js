@@ -1,6 +1,6 @@
 import { createTransport } from "nodemailer";
 import { mail } from "../../config/index.js";
-
+import Logger from "../../utils/logger/index.js";
 export default class mailService {
   constructor() {
     this.transporter = createTransport({
@@ -11,6 +11,7 @@ export default class mailService {
         pass: mail.pass,
       },
     });
+    this.logger = Logger.getInstance();
   }
 
   async newUser(user) {
@@ -27,7 +28,7 @@ export default class mailService {
       };
       const info = await this.transporter.sendMail(mailOptions);
     } catch (err) {
-      console.log(err);
+      this.logger.logServiceError("Mailer", err);
     }
   }
 
@@ -46,9 +47,8 @@ export default class mailService {
           `,
       };
       const info = await this.transporter.sendMail(mailOptions);
-      console.log(info);
     } catch (err) {
-      console.log(err);
+      this.logger.logServiceError();
     }
   }
 
@@ -67,9 +67,8 @@ export default class mailService {
           `,
       };
       const info = await this.transporter.sendMail(mailOptions);
-      console.log(info);
     } catch (err) {
-      console.log(err);
+      this.logger.logServiceError("Mailer", err);
     }
   }
 }
