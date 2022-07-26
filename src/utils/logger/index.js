@@ -17,6 +17,7 @@ export default class Logger {
 
   logWrongData(err) {
     logger.info(`Error: ${err}`);
+    logger.error(`Error: ${err}`);
   }
 
   logDatabaseError(err) {

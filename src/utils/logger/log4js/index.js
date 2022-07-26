@@ -3,13 +3,12 @@ import log4js from "log4js";
 log4js.configure({
   appenders: {
     console: { type: "console" },
-    infoFile: { type: "file", filename: "./logs/info.log" },
     warningFile: { type: "file", filename: "./logs/warning.log" },
     errorFile: { type: "file", filename: "./logs/error.log" },
     // niveles
     loggerInfo: {
       type: "logLevelFilter",
-      appender: "infoFile",
+      appender: "console",
       level: "info",
     },
     loggerWarning: {
