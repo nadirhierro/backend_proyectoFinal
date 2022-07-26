@@ -10,17 +10,22 @@ export default class CartsController {
       let carts = await service.getAllCarts();
       res.json(carts);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
   async getCartById(req, res, next) {
     try {
-      let { id } = req.params;
+      let id = req.params.id;
       let cart = await service.getCartById(id);
+      if (cart) {
+        res.json(cart);
+      } else {
+        res.json({ error: `Cart with id ${id} not found` });
+      }
       res.json(cart);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -42,30 +47,30 @@ export default class CartsController {
 
   async changeCartById(req, res, next) {
     try {
-      let { id } = req.params;
+      let id = req.params.id;
       let cart = { _id: id, ...req.body };
       let changed = await service.changeCart(cart);
       if (changed) {
         res.json({ cart: changed });
       } else {
-        res.json({ error: changed });
+        res.json({ error: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
   async deleteById(req, res, next) {
     try {
-      let { id } = req.params;
+      let id = req.params.id;
       let deleted = await service.deleteById(id);
       if (deleted) {
         res.json({ cartId: id, status: "deleted" });
       } else {
-        res.json({ error: deleted });
+        res.json({ error: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -74,7 +79,7 @@ export default class CartsController {
       let deleteAll = await service.deleteAll();
       res.json({ deleted: deleteAll });
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 }

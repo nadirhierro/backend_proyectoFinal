@@ -16,7 +16,7 @@ export default class memoryDaoProducts extends memoryContainer {
   }
 
   getByCategory(category) {
-    let products = this.container.find(
+    let products = this.container.filter(
       (product) => product.category == category
     );
     if (products) {
@@ -27,22 +27,11 @@ export default class memoryDaoProducts extends memoryContainer {
   }
 
   getBySubcategory(subcategory) {
-    let products = this.container.find(
+    let products = this.container.filter(
       (product) => product.subcategory == subcategory
     );
     if (products) {
       return products;
-    } else {
-      return false;
-    }
-  }
-
-  takeProduct(id, quantity) {
-    let productToTake = this.getById(id);
-    if (productToTake && productToTake.stock >= quantity) {
-      productToTake.stock = productToTake.stock - quantity;
-      let takeProduct = this.change(productToTake);
-      return takeProduct;
     } else {
       return false;
     }

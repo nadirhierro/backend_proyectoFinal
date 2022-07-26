@@ -20,11 +20,7 @@ export default class fileDaoMessages extends fileContainer {
     try {
       let all = await this.getAll();
       let filteredByEmail = all.filter((message) => (message.email = email));
-      if (filteredByEmail.length > 0) {
-        return filteredByEmail;
-      } else {
-        return false;
-      }
+      return filteredByEmail;
     } catch (err) {
       this.logger.logDatabaseError(err);
       throw err;

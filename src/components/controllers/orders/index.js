@@ -18,10 +18,10 @@ export default class OrdersController {
 
   async saveOrder(req, res, next) {
     try {
-      let user = req.user;
+      let user = await req.user;
       let products = req.body;
       let order = {
-        email: user[0].email,
+        email: user.email,
         state: "in process",
         products: products,
       };

@@ -16,7 +16,7 @@ export default class ProductsController {
 
   async getProductsByCategory(req, res, next) {
     try {
-      let { category } = req.params;
+      let category = req.params.categoryId;
       let products = await service.getProductsByCategory(category);
       res.json(products);
     } catch (err) {
@@ -26,7 +26,7 @@ export default class ProductsController {
 
   async getProductById(req, res, next) {
     try {
-      let { id } = req.params;
+      let id = req.params.id;
       let product = await service.getProductById(id);
       res.json(product);
     } catch (err) {
@@ -46,9 +46,9 @@ export default class ProductsController {
 
   async changeProduct(req, res, next) {
     try {
-      let { id } = req.params;
+      let id = req.params.id;
       let data = req.body;
-      let product = { id, ...data };
+      let product = { _id: id, ...data };
       let changed = await service.changeProduct(product);
       res.json(changed);
     } catch (err) {
@@ -58,9 +58,13 @@ export default class ProductsController {
 
   async deleteProductById(req, res, next) {
     try {
-      let { id } = req.params;
+      let id = req.params.id;
       let deleted = await service.deleteProductById(id);
-      res.json(deleted);
+      if (deleted) {
+        res.json(deleted);
+      } else {
+        res.json({ error: `Product with id ${id} not found` });
+      }
     } catch (err) {
       res.json({ error: err });
     }

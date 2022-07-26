@@ -16,7 +16,7 @@ export default class MessagesController {
 
   async getMessagesByEmail(req, res, next) {
     try {
-      let { email } = req.params;
+      let email = req.params.email;
       let messages = await service.getMessagesByEmail(email);
       res.json(messages);
     } catch (err) {

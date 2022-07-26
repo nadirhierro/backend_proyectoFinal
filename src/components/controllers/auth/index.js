@@ -33,7 +33,7 @@ export default class AuthController {
         email: user.email,
       });
     } catch (err) {
-      console.log(err);
+      res.render("error", { error: err });
     }
   }
 
@@ -44,11 +44,11 @@ export default class AuthController {
         if (!err) {
           res.render("logout", { name: user.name });
         } else {
-          res.send({ status: "logout ERROR", body: err });
+          res.render("failLogout", { error: err });
         }
       });
     } catch (err) {
-      console.log(err);
+      res.render("failLogout", { error: err });
     }
   }
 
@@ -56,6 +56,7 @@ export default class AuthController {
     passport.authenticate("login", {
       successRedirect: "home",
       failureRedirect: "faillogin",
+      failureMessage: true,
     })(req, res, next);
   }
 
@@ -63,6 +64,7 @@ export default class AuthController {
     passport.authenticate("signup", {
       successRedirect: "home",
       failureRedirect: "failsignup",
+      failureMessage: true,
     })(req, res, next);
   }
 

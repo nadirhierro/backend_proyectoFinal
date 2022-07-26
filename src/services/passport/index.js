@@ -10,12 +10,12 @@ passport.use(
   new LocalStrategy(async (email, password, done) => {
     try {
       let user = await users.getUserByEmail(email);
-      if (!user) return done(null, false);
-      console.log(user);
-      if (decrypt(user.password) !== password) return done(null, false);
+      if (!user) return done(null, false, { message: "Usuario inexistente" });
+      if (decrypt(user.password) !== password)
+        return done(null, false, { message: "Contraseña incorrecta" });
       return done(null, user);
     } catch (err) {
-      console.log(err);
+      return done(null, false, { message: `Error -- ${err}` });
     }
   })
 );
@@ -26,7 +26,7 @@ passport.use(
     { passReqToCallback: true },
     async (req, username, password, done) => {
       try {
-        let email = req.body.username;
+        let email = req.body.email;
         let password = encrypt(req.body.password);
         let name = req.body.name;
         let surname = req.body.surname;
@@ -52,7 +52,7 @@ passport.use(
         await users.saveUser(newUser);
         return done(null, newUser);
       } catch (err) {
-        console.log(err);
+        return done(null, false, { message: `Error -- ${err}` });
       }
     }
   )

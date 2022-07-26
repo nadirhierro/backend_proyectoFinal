@@ -9,7 +9,7 @@ let products = new ProductsController();
 
 routerProducts.get("/", products.getAllProducts);
 routerProducts.get("/:id", products.getProductById);
-routerProducts.get("/category/:categoryid", products.getProductsByCategory);
+routerProducts.get("/category/:categoryId", products.getProductsByCategory);
 routerProducts.post("/", products.saveProduct);
 routerProducts.put("/:id", products.changeProduct);
 routerProducts.delete("/", products.deleteAllProducts);

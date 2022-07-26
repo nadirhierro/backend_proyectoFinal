@@ -20,11 +20,7 @@ export default class mongodbDaoMessages extends mongodbContainer {
   async getMessagesByEmail(email) {
     try {
       let filteredByEmail = await this.model.find({ email: email });
-      if (filteredByEmail) {
-        return filteredByEmail;
-      } else {
-        return false;
-      }
+      return filteredByEmail;
     } catch (err) {
       this.logger.logDatabaseError(err);
       throw err;

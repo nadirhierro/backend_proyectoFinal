@@ -47,20 +47,4 @@ export default class mongodbDaoProducts extends mongodbContainer {
       throw err;
     }
   }
-
-  async takeProduct(id, quantity) {
-    try {
-      let productToTake = await this.getById(id);
-      if (productToTake && productToTake.stock >= quantity) {
-        productToTake.stock = productToTake.stock - quantity;
-        let takeProduct = await this.change(productToTake);
-        return takeProduct;
-      } else {
-        return false;
-      }
-    } catch (err) {
-      this.logger.logDatabaseError(err);
-      throw err;
-    }
-  }
 }
