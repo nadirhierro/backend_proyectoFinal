@@ -12,7 +12,7 @@ export default class OrdersController {
       let orders = await service.getOrders();
       res.json(orders);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -32,7 +32,7 @@ export default class OrdersController {
       }
       res.json(saved);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 }

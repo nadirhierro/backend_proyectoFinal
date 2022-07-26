@@ -10,7 +10,7 @@ export default class ProductsController {
       let products = await service.getProducts();
       res.json(products);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -20,7 +20,7 @@ export default class ProductsController {
       let products = await service.getProductsByCategory(category);
       res.json(products);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -30,7 +30,7 @@ export default class ProductsController {
       let product = await service.getProductById(id);
       res.json(product);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -40,7 +40,7 @@ export default class ProductsController {
       let saved = await service.saveProduct(product);
       res.json(saved);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -52,7 +52,7 @@ export default class ProductsController {
       let changed = await service.changeProduct(product);
       res.json(changed);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -62,7 +62,7 @@ export default class ProductsController {
       let deleted = await service.deleteProductById(id);
       res.json(deleted);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -71,7 +71,7 @@ export default class ProductsController {
       let deleted = await service.deleteAllProducts();
       res.json(deleted);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 }

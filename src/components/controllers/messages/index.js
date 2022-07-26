@@ -10,7 +10,7 @@ export default class MessagesController {
       let messages = await service.getMessages();
       res.json(messages);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -20,7 +20,7 @@ export default class MessagesController {
       let messages = await service.getMessagesByEmail(email);
       res.json(messages);
     } catch (err) {
-      res.json(err);
+      res.json({ error: err });
     }
   }
 
@@ -30,7 +30,7 @@ export default class MessagesController {
       let saved = await service.saveMessage(message);
       res.json(saved);
     } catch (err) {
-      console.log(err);
+      res.json({ error: err });
     }
   }
 }

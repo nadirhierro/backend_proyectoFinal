@@ -34,11 +34,7 @@ export default class CartsController {
         address: user.address,
       };
       let saved = await service.saveCart(cart);
-      if (saved) {
-        res.json({ cart: saved });
-      } else {
-        res.json({ error: saved });
-      }
+      res.json({ cart: saved });
     } catch (err) {
       res.json({ error: err });
     }

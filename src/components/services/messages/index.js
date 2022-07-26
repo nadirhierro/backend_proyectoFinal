@@ -1,21 +1,21 @@
 import daoFactory from "../../containers/daos/index.js";
 import Messages from "../../../models/defaultModels/messages/index.js";
+import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
 
 export default class apiMessages {
   constructor() {
     this.db = factory.createMessagesDaoDB();
+    this.logger = Logger.getInstance();
   }
 
   getValidation(message) {
     try {
       Messages.validate(message);
     } catch (err) {
-      throw new Error(
-        "El mensaje posee un formato inválido o falta información" +
-          err.details[0].message
-      );
+      this.logger.logWrongData(err.details[0].message);
+      throw err.details[0].message;
     }
   }
 
@@ -25,7 +25,7 @@ export default class apiMessages {
       let allMessages = await this.db.getMessages();
       return allMessages;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -34,7 +34,7 @@ export default class apiMessages {
       let messages = await this.db.getMessagesByEmail(email);
       return messages;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -45,7 +45,7 @@ export default class apiMessages {
       let saved = await this.db.save(message);
       return saved;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 }

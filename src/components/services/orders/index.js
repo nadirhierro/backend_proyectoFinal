@@ -1,21 +1,21 @@
 import daoFactory from "../../containers/daos/index.js";
 import Orders from "../../../models/defaultModels/orders/index.js";
+import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
 
 export default class apiOrders {
   constructor() {
     this.db = factory.createOrdersDaoDB();
+    this.logger = Logger.getInstance();
   }
 
   getValidation(order, required) {
     try {
       Orders.validate(order, required);
     } catch (err) {
-      throw new Error(
-        "El mensaje posee un formato inválido o falta información" +
-          err.details[0].message
-      );
+      this.logger.logWrongData(err.details[0].message);
+      throw err.details[0].message;
     }
   }
 
@@ -24,7 +24,7 @@ export default class apiOrders {
       let orders = await this.db.getAll();
       return orders;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -34,7 +34,7 @@ export default class apiOrders {
       let saved = await this.db.save(order);
       return saved;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 }

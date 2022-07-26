@@ -1,21 +1,21 @@
 import daoFactory from "../../containers/daos/index.js";
 import Products from "../../../models/defaultModels/products/index.js";
+import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
 
 export default class apiProducts {
   constructor() {
     this.db = factory.createProductsDaoDB();
+    this.logger = Logger.getInstance();
   }
 
   getValidation(product, required) {
     try {
       Products.validate(product, required);
     } catch (err) {
-      throw new Error(
-        "El mensaje posee un formato inválido o falta información" +
-          err.details[0].message
-      );
+      this.logger.logWrongData(err.details[0].message);
+      throw err.details[0].message;
     }
   }
 
@@ -24,7 +24,7 @@ export default class apiProducts {
       let all = await this.db.getAll();
       return all;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -33,7 +33,7 @@ export default class apiProducts {
       let products = await this.db.getProductsByCategory(category);
       return products;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -42,7 +42,7 @@ export default class apiProducts {
       let product = await this.db.getById(id);
       return product;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -52,7 +52,7 @@ export default class apiProducts {
       let saved = await this.db.save(product);
       return saved;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -62,7 +62,7 @@ export default class apiProducts {
       let changed = await this.db.change(product);
       return changed;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -71,7 +71,7 @@ export default class apiProducts {
       let deleted = await this.db.deleteById(id);
       return deleted;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 }

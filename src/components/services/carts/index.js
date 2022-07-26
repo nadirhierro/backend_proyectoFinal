@@ -4,18 +4,17 @@ import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
 
-let logger = Logger.getInstance();
-
 export default class apiCarts {
   constructor() {
     this.db = factory.createCartsDaoDB();
+    this.logger = Logger.getInstance();
   }
 
   getValidation(cart, required) {
     try {
       Carts.validate(cart, required);
     } catch (err) {
-      logger.logWrongData(err.details[0].message);
+      this.logger.logWrongData(err.details[0].message);
       throw err.details[0].message;
     }
   }
@@ -25,7 +24,7 @@ export default class apiCarts {
       let carts = await this.db.getAll();
       return carts;
     } catch (err) {
-      console.log("hola");
+      throw err;
     }
   }
 
@@ -34,7 +33,7 @@ export default class apiCarts {
       let cart = await this.db.getById(id);
       return cart;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -54,7 +53,7 @@ export default class apiCarts {
       let changed = await this.db.change(cart);
       return changed;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 
@@ -63,7 +62,7 @@ export default class apiCarts {
       let deleted = await this.db.deleteById(id);
       return deleted;
     } catch (err) {
-      console.log(err);
+      throw err;
     }
   }
 }
