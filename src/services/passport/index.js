@@ -13,8 +13,9 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Usuario inexistente" });
       }
-      if (decrypt(user.password) !== password)
+      if (decrypt(user.password) !== password) {
         return done(null, false, { message: "Contraseña incorrecta" });
+      }
       return done(null, user);
     } catch (err) {
       return done(null, false, { message: `Error -- ${err}` });

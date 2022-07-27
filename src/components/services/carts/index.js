@@ -47,10 +47,10 @@ export default class apiCarts {
     }
   }
 
-  async changeCart(cart) {
+  async changeCart(id, cart) {
     try {
       this.getValidation(cart, false);
-      let changed = await this.db.change(cart);
+      let changed = await this.db.change(id, cart);
       return changed;
     } catch (err) {
       throw err;

@@ -49,14 +49,14 @@ export default class CartsController {
   async changeCartById(req, res, next) {
     try {
       let id = req.params.id;
-      let cart = { _id: id, ...req.body };
-      let changed = await service.changeCart(cart);
+      let changed = await service.changeCart(id, req.body);
       if (changed) {
         res.json({ cart: changed });
       } else {
         res.json({ error: `Cart with id ${id} not found` });
       }
     } catch (err) {
+      console.log(err);
       res.json({ error: err });
     }
   }

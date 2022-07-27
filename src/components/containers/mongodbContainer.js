@@ -32,10 +32,10 @@ export default class mongodbContainer {
     }
   }
 
-  async change(obj) {
+  async change(id, obj) {
     try {
       const res = await this.model.updateOne(
-        { _id: obj.id },
+        { _id: id },
         { ...obj, timestamp: moment().format("DD/MM/YYYY HH:MM:SS") }
       );
       if (res.matchedCount > 0) {

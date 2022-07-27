@@ -56,10 +56,10 @@ export default class apiProducts {
     }
   }
 
-  async changeProduct(product) {
+  async changeProduct(id, product) {
     try {
       this.getValidation(product, false);
-      let changed = await this.db.change(product);
+      let changed = await this.db.change(id, product);
       return changed;
     } catch (err) {
       throw err;

@@ -47,9 +47,7 @@ export default class ProductsController {
   async changeProduct(req, res, next) {
     try {
       let id = req.params.id;
-      let data = req.body;
-      let product = { _id: id, ...data };
-      let changed = await service.changeProduct(product);
+      let changed = await service.changeProduct(id, req.body);
       res.json(changed);
     } catch (err) {
       res.json({ error: err });

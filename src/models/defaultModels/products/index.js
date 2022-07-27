@@ -30,10 +30,10 @@ export default class Products {
       subcategory: required ? Joi.string().required() : Joi.string(),
       brand: required ? Joi.string().required() : Joi.string(),
       title: required ? Joi.string().required() : Joi.string(),
-      price: required ? Joi.number().required() : Joi.string(),
-      featured: required ? Joi.boolean().required() : Joi.string(),
+      price: required ? Joi.number().required() : Joi.number(),
+      featured: required ? Joi.boolean().required() : Joi.boolean(),
       thumbnail: required ? Joi.string().required() : Joi.string(),
-      stock: required ? Joi.number().required() : Joi.string(),
+      stock: required ? Joi.number().required() : Joi.number(),
     });
     const { error } = productSchema.validate(product);
     if (error) {
