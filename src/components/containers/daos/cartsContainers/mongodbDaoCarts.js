@@ -16,4 +16,18 @@ export default class mongodbDaoCarts extends mongodbContainer {
     }
     return instance;
   }
+
+  async getCartByEmail(email) {
+    try {
+      let cart = await this.model.findOne({ email: email });
+      if (cart) {
+        return cart;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
+    }
+  }
 }

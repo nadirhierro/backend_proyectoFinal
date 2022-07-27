@@ -14,4 +14,18 @@ export default class memoryDaoCarts extends memoryContainer {
     }
     return instance;
   }
+
+  async getCartByEmail(email) {
+    try {
+      let cart = await this.container.find({ email: email });
+      if (cart) {
+        return cart;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
+    }
+  }
 }
