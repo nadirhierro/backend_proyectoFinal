@@ -65,4 +65,13 @@ export default class apiCarts {
       throw err;
     }
   }
+
+  async deleteAll() {
+    try {
+      let deleted = await this.db.deleteAll();
+      return deleted;
+    } catch (err) {
+      throw err;
+    }
+  }
 }

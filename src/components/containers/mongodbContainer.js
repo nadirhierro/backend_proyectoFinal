@@ -79,7 +79,7 @@ export default class mongodbContainer {
 
   async deleteAll() {
     try {
-      let allDeleted = await this.model.remove({});
+      let allDeleted = await this.model.deleteMany({});
       return allDeleted;
     } catch (err) {
       this.logger.logDatabaseError(err);

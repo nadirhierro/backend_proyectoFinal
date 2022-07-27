@@ -31,6 +31,7 @@ export default class CartsController {
   async saveCart(req, res, next) {
     try {
       let user = await req.user;
+      console.log(user);
       let products = req.body;
       let cart = {
         email: user.email,
@@ -40,6 +41,7 @@ export default class CartsController {
       let saved = await service.saveCart(cart);
       res.json({ cart: saved });
     } catch (err) {
+      console.log(err);
       res.json({ error: err });
     }
   }
@@ -79,6 +81,7 @@ export default class CartsController {
       let deleteAll = await service.deleteAll();
       res.json({ deleted: deleteAll });
     } catch (err) {
+      console.log(err);
       res.json({ error: err });
     }
   }
