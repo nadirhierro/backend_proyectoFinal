@@ -48,7 +48,7 @@ export default class apiProducts {
 
   async saveProduct(product) {
     try {
-      this.getValidation(procut, true);
+      this.getValidation(product, true);
       let saved = await this.db.save(product);
       return saved;
     } catch (err) {

@@ -18,7 +18,11 @@ export default class ProductsController {
     try {
       let category = req.params.categoryId;
       let products = await service.getProductsByCategory(category);
-      res.json(products);
+      if (products.length > 0) {
+        res.json(products);
+      } else {
+        res.json({ message: `No products for category ${category}` });
+      }
     } catch (err) {
       res.json({ error: err });
     }
@@ -28,7 +32,11 @@ export default class ProductsController {
     try {
       let id = req.params.id;
       let product = await service.getProductById(id);
-      res.json(product);
+      if (product) {
+        res.json(product);
+      } else {
+        res.json({ message: `Product with id ${id} not found` });
+      }
     } catch (err) {
       res.json({ error: err });
     }
@@ -40,6 +48,7 @@ export default class ProductsController {
       let saved = await service.saveProduct(product);
       res.json(saved);
     } catch (err) {
+      console.log(err);
       res.json({ error: err });
     }
   }

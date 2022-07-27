@@ -25,13 +25,13 @@ export default class Products {
   // Valdiación de la data
   static validate(product, required) {
     const productSchema = Joi.object({
-      code: required ? Joi.string().required() : Joi.string(),
+      code: required ? Joi.number().required() : Joi.number(),
       category: required ? Joi.string().required() : Joi.string(),
       subcategory: required ? Joi.string().required() : Joi.string(),
       brand: required ? Joi.string().required() : Joi.string(),
-      title: required ? Joi.string().required() : Joi.string(),
+      name: required ? Joi.string().required() : Joi.string(),
       price: required ? Joi.number().required() : Joi.number(),
-      featured: required ? Joi.boolean().required() : Joi.boolean(),
+      featured: required ? Joi.string().required() : Joi.string(),
       thumbnail: required ? Joi.string().required() : Joi.string(),
       stock: required ? Joi.number().required() : Joi.number(),
     });
