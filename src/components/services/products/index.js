@@ -30,7 +30,7 @@ export default class apiProducts {
 
   async getProductsByCategory(category) {
     try {
-      let products = await this.db.getProductsByCategory(category);
+      let products = await this.db.getByCategory(category);
       return products;
     } catch (err) {
       throw err;

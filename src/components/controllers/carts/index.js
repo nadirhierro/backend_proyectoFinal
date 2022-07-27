@@ -21,9 +21,8 @@ export default class CartsController {
       if (cart) {
         res.json(cart);
       } else {
-        res.json({ error: `Cart with id ${id} not found` });
+        res.json({ message: `Cart with id ${id} not found` });
       }
-      res.json(cart);
     } catch (err) {
       res.json({ error: err });
     }
