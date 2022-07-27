@@ -62,13 +62,14 @@ export default class CartsController {
   async deleteById(req, res, next) {
     try {
       let id = req.params.id;
-      let deleted = await service.deleteById(id);
+      let deleted = await service.deleteCart(id);
       if (deleted) {
         res.json({ cartId: id, status: "deleted" });
       } else {
         res.json({ error: `Cart with id ${id} not found` });
       }
     } catch (err) {
+      console.log(err);
       res.json({ error: err });
     }
   }
