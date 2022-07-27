@@ -16,24 +16,34 @@ export default class memoryDaoProducts extends memoryContainer {
   }
 
   getByCategory(category) {
-    let products = this.container.filter(
-      (product) => product.category == category
-    );
-    if (products) {
-      return products;
-    } else {
-      return false;
+    try {
+      let products = this.container.filter(
+        (product) => product.category == category
+      );
+      if (products) {
+        return products;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
     }
   }
 
   getBySubcategory(subcategory) {
-    let products = this.container.filter(
-      (product) => product.subcategory == subcategory
-    );
-    if (products) {
-      return products;
-    } else {
-      return false;
+    try {
+      let products = this.container.filter(
+        (product) => product.subcategory == subcategory
+      );
+      if (products) {
+        return products;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
     }
   }
 }

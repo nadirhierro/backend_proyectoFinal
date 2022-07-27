@@ -15,7 +15,7 @@ export default class apiMessages {
       Messages.validate(message);
     } catch (err) {
       this.logger.logWrongData(err.details[0].message);
-      throw err.details[0].message;
+      throw new Error(err.details[0].message);
     }
   }
 

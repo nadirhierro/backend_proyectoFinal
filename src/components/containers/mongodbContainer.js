@@ -13,7 +13,7 @@ export default class mongodbContainer {
       return all;
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -30,7 +30,7 @@ export default class mongodbContainer {
       return saveObj;
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -47,7 +47,7 @@ export default class mongodbContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -61,7 +61,7 @@ export default class mongodbContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -75,7 +75,7 @@ export default class mongodbContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -85,7 +85,7 @@ export default class mongodbContainer {
       return allDeleted;
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 }

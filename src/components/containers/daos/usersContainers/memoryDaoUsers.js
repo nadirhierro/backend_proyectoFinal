@@ -16,11 +16,16 @@ export default class memoryDaoUsers extends memoryContainer {
   }
 
   getUserByEmail(email) {
-    let user = this.container.find((user) => user.email == email);
-    if (user) {
-      return user;
-    } else {
-      return false;
+    try {
+      let user = this.container.find((user) => user.email == email);
+      if (user) {
+        return user;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
     }
   }
 }

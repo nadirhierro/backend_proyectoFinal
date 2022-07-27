@@ -27,7 +27,7 @@ export default class fileDaoUsers extends fileContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 }

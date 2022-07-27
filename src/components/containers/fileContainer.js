@@ -1,5 +1,6 @@
 import * as fs from "node:fs";
 import moment from "moment";
+import ObjectID from "bson-objectid";
 import Logger from "../../utils/logger/index.js";
 
 export default class fileContainer {
@@ -16,7 +17,7 @@ export default class fileContainer {
       );
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -30,18 +31,14 @@ export default class fileContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
   async save(obj) {
     try {
       let data = await this.getAll();
-      let id = 1;
-      if (data.length > 0) {
-        let ids = data.map((item) => item.id);
-        id = Math.max.apply(null, ids) + 1;
-      }
+      let id = ObjectID();
       let newObject = {
         id: id,
         timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
@@ -52,7 +49,7 @@ export default class fileContainer {
       return newObject;
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -73,7 +70,7 @@ export default class fileContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -88,7 +85,7 @@ export default class fileContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -104,16 +101,17 @@ export default class fileContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
   async deleteAll() {
     try {
-      await this.write([]);
+      let deleteAll = await this.write([]);
+      return deleteAll;
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 }

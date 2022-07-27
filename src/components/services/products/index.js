@@ -1,5 +1,6 @@
 import daoFactory from "../../containers/daos/index.js";
 import Products from "../../../models/defaultModels/products/index.js";
+import isValidObjectId from "../../../models/defaultModels/ObjectID/index.js";
 import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
@@ -15,7 +16,16 @@ export default class apiProducts {
       Products.validate(product, required);
     } catch (err) {
       this.logger.logWrongData(err.details[0].message);
-      throw err.details[0].message;
+      throw new Error(err.details[0].message);
+    }
+  }
+
+  getValidationId(id) {
+    try {
+      isValidObjectId(id);
+    } catch (err) {
+      this.logger.logWrongData(err.message);
+      throw new Error(err.message);
     }
   }
 
@@ -39,6 +49,7 @@ export default class apiProducts {
 
   async getProductById(id) {
     try {
+      this.getValidationId(id);
       let product = await this.db.getById(id);
       return product;
     } catch (err) {
@@ -58,6 +69,7 @@ export default class apiProducts {
 
   async changeProduct(id, product) {
     try {
+      this.getValidationId(id);
       this.getValidation(product, false);
       let changed = await this.db.change(id, product);
       return changed;
@@ -68,7 +80,17 @@ export default class apiProducts {
 
   async deleteProductById(id) {
     try {
+      this.getValidationId(id);
       let deleted = await this.db.deleteById(id);
+      return deleted;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async deleteAllProducts() {
+    try {
+      let deleted = await this.db.deleteAll();
       return deleted;
     } catch (err) {
       throw err;

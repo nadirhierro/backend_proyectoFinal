@@ -23,7 +23,7 @@ export default class mongodbDaoMessages extends mongodbContainer {
       return filteredByEmail;
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 }

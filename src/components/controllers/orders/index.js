@@ -10,9 +10,9 @@ export default class OrdersController {
   async getOrders(req, res, next) {
     try {
       let orders = await service.getOrders();
-      res.json(orders);
+      res.status(200).json(orders);
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
@@ -30,9 +30,14 @@ export default class OrdersController {
         let mailToUser = await mailer.newOrder(user, products);
         let mailToAdmin = await mailer.newOrderToAdmin(user, products);
       }
-      res.json(saved);
+      res.status(200).json(saved);
     } catch (err) {
-      res.json({ error: err });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 }

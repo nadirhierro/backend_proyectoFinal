@@ -8,9 +8,14 @@ export default class MessagesController {
   async getMessages(req, res, next) {
     try {
       let messages = await service.getMessages();
-      res.json(messages);
+      res.status(200).json(messages);
     } catch (err) {
-      res.json({ error: err });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 
@@ -18,9 +23,14 @@ export default class MessagesController {
     try {
       let email = req.params.email;
       let messages = await service.getMessagesByEmail(email);
-      res.json(messages);
+      res.status(200).json(messages);
     } catch (err) {
-      res.json({ error: err });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 
@@ -28,9 +38,14 @@ export default class MessagesController {
     try {
       let message = req.body;
       let saved = await service.saveMessage(message);
-      res.json(saved);
+      res.status(200).json(saved);
     } catch (err) {
-      res.json({ error: err });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 }

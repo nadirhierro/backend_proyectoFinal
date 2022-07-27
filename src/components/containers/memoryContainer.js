@@ -1,69 +1,95 @@
 import moment from "moment";
+import ObjectID from "bson-objectid";
+import Logger from "../../utils/logger/index.js";
 
 export default class memoryContainer {
   constructor() {
     this.container = [];
+    this.logger = Logger.getInstance();
   }
 
   getAll() {
-    return this.container;
+    try {
+      return this.container;
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
+    }
   }
 
   save(obj) {
-    let id = 1;
-    if (this.container.length > 0) {
-      let ids = this.container.map((item) => item._id);
-      id = Math.max.apply(null, ids) + 1;
+    try {
+      let id = ObjectID();
+      let newObject = {
+        _id: id,
+        timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
+        ...obj,
+      };
+      this.container.push(newObject);
+      return newObject;
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
     }
-    let newObject = {
-      _id: id,
-      timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
-      ...obj,
-    };
-    this.container.push(newObject);
-    return newObject;
   }
 
   change(obj) {
-    let objInContainer = this.container.find(
-      (element) => element._id == obj._id
-    );
-    if (objInContainer) {
-      let newObject = {
-        ...obj,
-        timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
-      };
-      this.container.splice(
-        this.container.indexOf(objInContainer),
-        1,
-        newObject
+    try {
+      let objInContainer = this.container.find(
+        (element) => element._id == obj._id
       );
-      return newObject;
-    } else {
-      return false;
+      if (objInContainer) {
+        let newObject = {
+          ...obj,
+          timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
+        };
+        this.container.splice(
+          this.container.indexOf(objInContainer),
+          1,
+          newObject
+        );
+        return newObject;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
     }
   }
 
   getById(id) {
-    let element = this.container.find((obj) => obj._id == id);
-    if (element) {
-      return element;
-    } else {
-      return false;
+    try {
+      let element = this.container.find((obj) => obj._id == id);
+      if (element) {
+        return element;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
     }
   }
 
   deleteById(id) {
-    let obj = this.getById(id);
-    if (obj) {
-      this.container.splice(this.container.indexOf(obj), 1);
-      return true;
-    } else {
-      return false;
-    }
+    try {
+      let obj = this.getById(id);
+      if (obj) {
+        this.container.splice(this.container.indexOf(obj), 1);
+        return true;
+      } else {
+        return false;
+      }
+    } catch (err) {}
   }
 
   deleteAll() {
-    this.container = [];
+    try {
+      this.container = [];
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
+    }
   }
 }

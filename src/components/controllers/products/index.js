@@ -8,9 +8,9 @@ export default class ProductsController {
   async getAllProducts(req, res, next) {
     try {
       let products = await service.getProducts();
-      res.json(products);
+      res.status(200).json(products);
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
@@ -19,12 +19,14 @@ export default class ProductsController {
       let category = req.params.categoryId;
       let products = await service.getProductsByCategory(category);
       if (products.length > 0) {
-        res.json(products);
+        res.status(200).json(products);
       } else {
-        res.json({ message: `No products for category ${category}` });
+        res
+          .status(200)
+          .json({ message: `No products for category ${category}` });
       }
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
@@ -33,12 +35,12 @@ export default class ProductsController {
       let id = req.params.id;
       let product = await service.getProductById(id);
       if (product) {
-        res.json(product);
+        res.status(200).json(product);
       } else {
-        res.json({ message: `Product with id ${id} not found` });
+        res.status(200).json({ message: `Product with id ${id} not found` });
       }
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
@@ -46,9 +48,9 @@ export default class ProductsController {
     try {
       let product = req.body;
       let saved = await service.saveProduct(product);
-      res.json(saved);
+      res.status(200).json(saved);
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
@@ -56,9 +58,9 @@ export default class ProductsController {
     try {
       let id = req.params.id;
       let changed = await service.changeProduct(id, req.body);
-      res.json(changed);
+      res.status(200).json(changed);
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
@@ -67,21 +69,26 @@ export default class ProductsController {
       let id = req.params.id;
       let deleted = await service.deleteProductById(id);
       if (deleted) {
-        res.json(deleted);
+        res.status(200).json(deleted);
       } else {
-        res.json({ message: `Product with id ${id} not found` });
+        res.status(200).json({ message: `Product with id ${id} not found` });
       }
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: err });
     }
   }
 
   async deleteAllProducts(req, res, next) {
     try {
       let deleted = await service.deleteAllProducts();
-      res.json(deleted);
+      res.status(200).json(deleted);
     } catch (err) {
-      res.json({ error: err });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 }

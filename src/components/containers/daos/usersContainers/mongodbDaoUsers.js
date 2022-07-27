@@ -27,7 +27,7 @@ export default class mongodbDaoUsers extends mongodbContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 }

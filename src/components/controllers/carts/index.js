@@ -10,7 +10,12 @@ export default class CartsController {
       let carts = await service.getAllCarts();
       res.status(200).json(carts);
     } catch (err) {
-      res.status(500).json({ error: "Internal Server Error" });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 
@@ -24,7 +29,12 @@ export default class CartsController {
         res.status(200).json({ message: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      res.status(500).json({ err: "Internal Server error" });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 
@@ -40,11 +50,12 @@ export default class CartsController {
       let saved = await service.saveCart(cart);
       res.json({ cart: saved });
     } catch (err) {
-      if (err.name == "ValidationError") {
-        res.status(400).json({ error: err.details[0].message });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
       } else {
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(400);
       }
+      res.json({ error: err.message });
     }
   }
 
@@ -58,11 +69,12 @@ export default class CartsController {
         res.status(200).json({ message: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      if (err.name == "ValidationError") {
-        res.status(400).json({ error: err.details[0].message });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
       } else {
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(400);
       }
+      res.json({ error: err.message });
     }
   }
 
@@ -76,8 +88,12 @@ export default class CartsController {
         res.status(200).json({ message: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      console.log(err);
-      res.json({ error: err });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 
@@ -86,8 +102,12 @@ export default class CartsController {
       let deleteAll = await service.deleteAll();
       res.status(200).json({ deleted: deleteAll });
     } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Internal Server Error" });
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
     }
   }
 }

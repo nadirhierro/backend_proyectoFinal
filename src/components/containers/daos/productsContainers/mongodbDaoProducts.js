@@ -27,7 +27,7 @@ export default class mongodbDaoProducts extends mongodbContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 
@@ -44,7 +44,7 @@ export default class mongodbDaoProducts extends mongodbContainer {
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
-      throw err;
+      throw new Error("Database Error");
     }
   }
 }

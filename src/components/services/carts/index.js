@@ -1,5 +1,6 @@
 import daoFactory from "../../containers/daos/index.js";
 import Carts from "../../../models/defaultModels/carts/index.js";
+import isValidObjectId from "../../../models/defaultModels/ObjectID/index.js";
 import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
@@ -15,7 +16,16 @@ export default class apiCarts {
       Carts.validate(cart, required);
     } catch (err) {
       this.logger.logWrongData(err.details[0].message);
-      throw err;
+      throw new Error(err.details[0].message);
+    }
+  }
+
+  getValidationId(id) {
+    try {
+      isValidObjectId(id);
+    } catch (err) {
+      this.logger.logWrongData(err.message);
+      throw new Error(err.message);
     }
   }
 
@@ -30,6 +40,7 @@ export default class apiCarts {
 
   async getCartById(id) {
     try {
+      this.getValidationId(id);
       let cart = await this.db.getById(id);
       return cart;
     } catch (err) {
@@ -49,6 +60,7 @@ export default class apiCarts {
 
   async changeCart(id, cart) {
     try {
+      this.getValidationId(id);
       this.getValidation(cart, false);
       let changed = await this.db.change(id, cart);
       return changed;
@@ -59,6 +71,7 @@ export default class apiCarts {
 
   async deleteCart(id) {
     try {
+      this.getValidationId(id);
       let deleted = await this.db.deleteById(id);
       return deleted;
     } catch (err) {
