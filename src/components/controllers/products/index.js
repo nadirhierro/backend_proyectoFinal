@@ -48,7 +48,6 @@ export default class ProductsController {
       let saved = await service.saveProduct(product);
       res.json(saved);
     } catch (err) {
-      console.log(err);
       res.json({ error: err });
     }
   }
@@ -70,7 +69,7 @@ export default class ProductsController {
       if (deleted) {
         res.json(deleted);
       } else {
-        res.json({ error: `Product with id ${id} not found` });
+        res.json({ message: `Product with id ${id} not found` });
       }
     } catch (err) {
       res.json({ error: err });
