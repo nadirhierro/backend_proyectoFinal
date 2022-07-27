@@ -15,7 +15,7 @@ export default class apiCarts {
       Carts.validate(cart, required);
     } catch (err) {
       this.logger.logWrongData(err.details[0].message);
-      throw err.details[0].message;
+      throw err;
     }
   }
 

@@ -8,9 +8,9 @@ export default class CartsController {
   async getAllCarts(req, res, next) {
     try {
       let carts = await service.getAllCarts();
-      res.json(carts);
+      res.status(200).json(carts);
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
 
@@ -19,19 +19,18 @@ export default class CartsController {
       let id = req.params.id;
       let cart = await service.getCartById(id);
       if (cart) {
-        res.json(cart);
+        res.status(200).json(cart);
       } else {
-        res.json({ message: `Cart with id ${id} not found` });
+        res.status(200).json({ message: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      res.json({ error: err });
+      res.status(500).json({ err: "Internal Server error" });
     }
   }
 
   async saveCart(req, res, next) {
     try {
       let user = await req.user;
-      console.log(user);
       let products = req.body;
       let cart = {
         email: user.email,
@@ -41,8 +40,11 @@ export default class CartsController {
       let saved = await service.saveCart(cart);
       res.json({ cart: saved });
     } catch (err) {
-      console.log(err);
-      res.json({ error: err });
+      if (err.name == "ValidationError") {
+        res.status(400).json({ error: err.details[0].message });
+      } else {
+        res.status(500).json({ error: "Internal Server Error" });
+      }
     }
   }
 
@@ -51,13 +53,16 @@ export default class CartsController {
       let id = req.params.id;
       let changed = await service.changeCart(id, req.body);
       if (changed) {
-        res.json({ cart: changed });
+        res.status(200).json({ cart: changed });
       } else {
-        res.json({ error: `Cart with id ${id} not found` });
+        res.status(200).json({ message: `Cart with id ${id} not found` });
       }
     } catch (err) {
-      console.log(err);
-      res.json({ error: err });
+      if (err.name == "ValidationError") {
+        res.status(400).json({ error: err.details[0].message });
+      } else {
+        res.status(500).json({ error: "Internal Server Error" });
+      }
     }
   }
 
@@ -66,9 +71,9 @@ export default class CartsController {
       let id = req.params.id;
       let deleted = await service.deleteCart(id);
       if (deleted) {
-        res.json({ cartId: id, status: "deleted" });
+        res.status(200).json({ cartId: id, status: "deleted" });
       } else {
-        res.json({ error: `Cart with id ${id} not found` });
+        res.status(200).json({ message: `Cart with id ${id} not found` });
       }
     } catch (err) {
       console.log(err);
@@ -79,10 +84,10 @@ export default class CartsController {
   async deleteAll(req, res, next) {
     try {
       let deleteAll = await service.deleteAll();
-      res.json({ deleted: deleteAll });
+      res.status(200).json({ deleted: deleteAll });
     } catch (err) {
       console.log(err);
-      res.json({ error: err });
+      res.status(500).json({ error: "Internal Server Error" });
     }
   }
 }

@@ -24,6 +24,8 @@ export default class mongodbContainer {
         timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
       };
       let objModel = new this.model(newObj);
+      console.log(this.model);
+      console.log(objModel);
       let saveObj = await objModel.save();
       return saveObj;
     } catch (err) {
