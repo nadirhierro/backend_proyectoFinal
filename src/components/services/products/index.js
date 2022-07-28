@@ -5,10 +5,19 @@ import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
 
+let instance = null;
+
 export default class apiProducts {
   constructor() {
     this.db = factory.createProductsDaoDB();
     this.logger = Logger.getInstance();
+  }
+
+  static getInstance() {
+    if (!instance) {
+      instance = new apiProducts();
+    }
+    return instance;
   }
 
   getValidation(product, required) {

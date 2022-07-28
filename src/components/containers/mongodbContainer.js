@@ -10,7 +10,8 @@ export default class mongodbContainer {
   async getAll() {
     try {
       let all = await this.model.find({});
-      return all;
+      let allObject = all.map((obj) => obj.toObject());
+      return allObject;
     } catch (err) {
       this.logger.logDatabaseError(err);
       throw new Error("Database Error");
@@ -24,10 +25,8 @@ export default class mongodbContainer {
         timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
       };
       let objModel = new this.model(newObj);
-      console.log(this.model);
-      console.log(objModel);
       let saveObj = await objModel.save();
-      return saveObj;
+      return saveObj.toObject();
     } catch (err) {
       this.logger.logDatabaseError(err);
       throw new Error("Database Error");
@@ -40,8 +39,8 @@ export default class mongodbContainer {
         { _id: id },
         { ...obj, timestamp: moment().format("DD/MM/YYYY HH:MM:SS") }
       );
-      if (res.matchedCount > 0) {
-        return res;
+      if (res.modifiedCount > 0) {
+        return true;
       } else {
         return false;
       }
@@ -55,7 +54,7 @@ export default class mongodbContainer {
     try {
       let element = await this.model.findById(id);
       if (element) {
-        return element;
+        return element.toObject();
       } else {
         return false;
       }
@@ -82,7 +81,11 @@ export default class mongodbContainer {
   async deleteAll() {
     try {
       let allDeleted = await this.model.deleteMany({});
-      return allDeleted;
+      if (allDeleted.deleteCount > 0) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (err) {
       this.logger.logDatabaseError(err);
       throw new Error("Database Error");

@@ -5,10 +5,19 @@ import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
 
+let instance = null;
+
 export default class apiCarts {
   constructor() {
     this.db = factory.createCartsDaoDB();
     this.logger = Logger.getInstance();
+  }
+
+  static getInstance() {
+    if (!instance) {
+      instance = new apiCarts();
+    }
+    return instance;
   }
 
   getValidation(cart, required) {
@@ -42,6 +51,15 @@ export default class apiCarts {
     try {
       this.getValidationId(id);
       let cart = await this.db.getById(id);
+      return cart;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async getCartByEmail(email) {
+    try {
+      let cart = await this.db.getCartByEmail(email);
       return cart;
     } catch (err) {
       throw err;

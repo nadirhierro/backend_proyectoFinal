@@ -20,10 +20,11 @@ export default class mongodbDaoProducts extends mongodbContainer {
   async getByCategory(category) {
     try {
       let products = await this.model.find({ category: category });
-      if (products) {
-        return products;
+      if (products.length > 0) {
+        let allObject = products.map((obj) => obj.toObject());
+        return allObject;
       } else {
-        return false;
+        return products;
       }
     } catch (err) {
       this.logger.logDatabaseError(err);
@@ -37,8 +38,9 @@ export default class mongodbDaoProducts extends mongodbContainer {
         category: category,
         subcategory: subcategory,
       });
-      if (products) {
-        return products;
+      if (products.length > 0) {
+        let allObject = products.map((obj) => obj.toObject());
+        return allObject;
       } else {
         return false;
       }

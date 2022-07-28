@@ -2,10 +2,10 @@
   <!-- Nav de Bootstrap -->
   <nav class="navbar navbar-expand-lg fixed-top header--nav">
     <div class="container-fluid">
-      <a href="./">
+      <a href="/">
         <img
           class="navbar-brand animate__animated animate__fadeIn"
-          src="./assets/img/logoChico.png"
+          src="/assets/img/logoChico.png"
         />
       </a>
       <button
@@ -27,7 +27,7 @@
             <a
               class="nav-link active"
               aria-current="page"
-              href="./index.html"
+              href="/index.html"
             >Tienda</a>
           </li>
           <li class="nav-item">
@@ -68,7 +68,6 @@
   </nav>
 </header>
 <main class="main">
-  <div class="notificacionContainer"></div>
   <div class="container-fluid hero">
     <div class="row justify-content-center">
       <div
@@ -76,7 +75,7 @@
       >
         <img
           class="img-fluid heroLogo"
-          src="./assets/img/logo_white_large.png"
+          src="/assets/img/logo_white_large.png"
           alt="Logo Sincopado"
         />
         <p class="heroLema">Siempre la mejor atención</p>
@@ -102,5 +101,41 @@
       </div>
     </div>
   </div>
-
+  <div class="row filtrosProductos">
+    <div class="container-fluid tienda">
+      <div class="col grillaProductos">
+        {{#if products}}
+          {{#each products}}
+            {{#with this}}
+              <div id="{{name}}" class="tarjeta botonAgregar">
+                <div class="tarjetaCuerpo">
+                  <div class="cajaImagen">
+                    <img
+                      class="img-fluid imagen"
+                      src="{{this.thumbnail}}"
+                      alt="{{this.name}}"
+                    />
+                  </div>
+                  <div class="nombre">
+                    <p>{{this.name}}</p>
+                  </div>
+                  <div class="cuotas">
+                    <p class="texto">18 cuotas s/interés de</p>
+                    <p class="texto precioCuotas">
+                      1234
+                    </p>
+                  </div>
+                  <div class="precio"><p class="texto">Final: ${{this.price}}</p></div>
+                  <div class="agregar"><a
+                      href="/products/{{this._id}}"
+                      class="button"
+                    >Ver Producto</a></div>
+                </div>
+              </div>
+            {{/with}}
+          {{/each}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </main>

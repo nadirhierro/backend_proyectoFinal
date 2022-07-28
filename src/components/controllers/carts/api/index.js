@@ -1,6 +1,6 @@
-import apiCarts from "../../services/carts/index.js";
+import apiCarts from "../../../services/carts/index.js";
 
-let service = new apiCarts();
+let service = apiCarts.getInstance();
 
 export default class CartsController {
   constructor() {}
@@ -23,6 +23,25 @@ export default class CartsController {
     try {
       let id = req.params.id;
       let cart = await service.getCartById(id);
+      if (cart) {
+        res.status(200).json(cart);
+      } else {
+        res.status(200).json({ message: `Cart with id ${id} not found` });
+      }
+    } catch (err) {
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
+    }
+  }
+
+  async getCartByEmail(req, res, next) {
+    try {
+      let email = req.params.email;
+      let cart = await service.getCartByEmail(email);
       if (cart) {
         res.status(200).json(cart);
       } else {

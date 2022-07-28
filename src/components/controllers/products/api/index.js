@@ -1,6 +1,6 @@
-import apiProducts from "../../services/products/index.js";
+import apiProducts from "../../../services/products/index.js";
 
-let service = new apiProducts();
+let service = apiProducts.getInstance();
 
 export default class ProductsController {
   constructor() {}

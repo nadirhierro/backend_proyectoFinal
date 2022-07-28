@@ -1,0 +1,119 @@
+// mixin para height y width
+@mixin sizes($width, $height) {
+  height: $height;
+  width: $width;
+}
+// mixin para padding, margin y flex
+@mixin padding-y($padding-top, $padding-bottom) {
+  padding-top: $padding-top;
+  padding-bottom: $padding-bottom;
+}
+@mixin padding-x($padding-right, $padding-left) {
+  padding-right: $padding-right;
+  padding-left: $padding-left;
+}
+@mixin padding($padding) {
+  padding: $padding;
+}
+@mixin margin-y($margin-top, $margin-bottom) {
+  margin-top: $margin-top;
+  margin-bottom: $margin-bottom;
+}
+@mixin flex($gap, $justify-content, $align-items) {
+  display: flex;
+  gap: $gap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+@mixin flexColumn($gap, $justify-content, $align-items) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+// mixin para fadeIn
+@mixin fadeIn {
+  -webkit-animation: fadeIn 0.9s;
+  animation: fadeIn 0.9s;
+}
+// mixins para fondo
+@mixin fondoVerde {
+  background-color: $verde;
+  color: $amarillo;
+}
+// mixin para el fondo del hero
+@mixin fondoHero {
+  background-image: url("../img/heroFondo.jpg");
+  background-size: cover;
+  background-position: top;
+  background-color: rgba(0, 0, 0, 0.8);
+  background-blend-mode: color;
+  font-family: $nunito;
+}
+// mixins para búsqueda y filtros
+@mixin boxShadowInput {
+  border-color: $amarillo;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $amarillo;
+}
+@mixin categoria {
+  font-size: 20px;
+  border-radius: 30px;
+  list-style: none;
+  cursor: pointer;
+}
+// mixins para grilla productos
+@mixin grillaProductos {
+  grid-area: productos;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(3 00px, 1fr));
+  align-items: center;
+  @media (min-width: 768px) {
+    & {
+      grid-template-columns: repeat(2, minmax(275px, 1fr));
+    }
+  }
+  @media (min-width: 992px) {
+    & {
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+  }
+  @media (min-width: 1200px) {
+    & {
+      gap: 1rem;
+      grid-template-columns: repeat(3, minmax(250px, 1fr));
+    }
+  }
+  @media (min-width: 1400px) {
+    & {
+      grid-template-columns: repeat(4, minmax(200px, 1fr));
+    }
+  }
+}
+//mixin para las tarjetas
+@mixin tarjetaProducto {
+  grid-area: auto/span 1;
+  display: block;
+  position: relative;
+  @include padding(1rem);
+  top: 0;
+  transition: all 0.1s ease-in;
+  box-shadow: $sombra1;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    top: -2px;
+    box-shadow: $sombra2;
+  }
+}
+// mixin para las fotos
+@mixin fotos {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+}

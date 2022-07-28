@@ -8,33 +8,32 @@ export default class AuthController {
     if (req.isAuthenticated()) {
       next();
     } else {
-      res.render("index");
+      res.redirect("/index");
     }
   }
 
-  goIndex(req, res, next) {
-    res.redirect("/home");
+  isntAuth(req, res, next) {
+    if (!req.isAuthenticated()) {
+      next();
+    } else {
+      res.redirect("/products");
+    }
   }
 
-  goLogin(req, res, next) {
+  redirectIndex(req, res, next) {
+    res.redirect("/index");
+  }
+
+  renderIndex(req, res, next) {
+    res.render("index");
+  }
+
+  renderLogin(req, res, next) {
     res.render("login");
   }
 
-  goSignUp(req, res, next) {
+  renderSignup(req, res, next) {
     res.render("signup");
-  }
-
-  async goHome(req, res, next) {
-    try {
-      let user = await req.user;
-      res.render("home", {
-        name: user.name,
-        thumbnail: user.avatar,
-        email: user.email,
-      });
-    } catch (err) {
-      res.render("error", { error: err });
-    }
   }
 
   async makeLogout(req, res, next) {
@@ -62,7 +61,7 @@ export default class AuthController {
         if (err) {
           return next(err);
         }
-        return res.redirect("/home");
+        return res.redirect("/products");
       });
     })(req, res, next);
   }
@@ -77,7 +76,7 @@ export default class AuthController {
         if (err) {
           return next(err);
         }
-        return res.redirect("/home");
+        return res.redirect("/products");
       });
     })(req, res, next);
   }

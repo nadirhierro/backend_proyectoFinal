@@ -10,13 +10,7 @@
 .escondido {
   display: none;
 }
-.avatar {
-  width: 20%;
-  border-radius: 50%;
-}
-.logout {
-  background-color: rgba(73, 76, 54, 0.97);
-}
+
 .header--nav {
   font-family: "Nunito", sans-serif;
   max-height: 62px;
@@ -110,39 +104,6 @@
   font-family: "Nunito", sans-serif;
 }
 
-.main .notificacionContainer {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  justify-content: unset;
-  align-items: unset;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  z-index: 1000;
-}
-
-.main .notificacionContainer .notificacion {
-  padding: 1rem;
-  min-width: 350px;
-  max-width: 350px;
-  background-color: #494c36;
-  color: #a9ac83;
-  border-radius: 35px 0px 35px 0px;
-  -moz-border-radius: 35px 0px 35px 0px;
-  -webkit-border-radius: 35px 0px 35px 0px;
-  border: 2px solid #a9ac83;
-}
-
-.main .notificacionContainer .notificacion p {
-  margin: 0;
-}
-
-.main .notificacionContainer .restar {
-  background-color: #381e1e;
-  color: #658565;
-}
-
 .main .cajaCompraRealizada {
   background-color: #494c36;
   color: #a9ac83;
@@ -198,220 +159,106 @@
   align-self: flex-end;
 }
 
-.lds-roller {
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-}
-
-.lds-roller div {
-  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  transform-origin: 40px 40px;
-}
-
-.lds-roller div:after {
-  content: " ";
-  display: block;
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #494c36;
-  margin: -4px 0 0 -4px;
-}
-
-.lds-roller div:nth-child(1) {
-  animation-delay: -0.036s;
-}
-
-.lds-roller div:nth-child(1):after {
-  top: 63px;
-  left: 63px;
-}
-
-.lds-roller div:nth-child(2) {
-  animation-delay: -0.072s;
-}
-
-.lds-roller div:nth-child(2):after {
-  top: 68px;
-  left: 56px;
-}
-
-.lds-roller div:nth-child(3) {
-  animation-delay: -0.108s;
-}
-
-.lds-roller div:nth-child(3):after {
-  top: 71px;
-  left: 48px;
-}
-
-.lds-roller div:nth-child(4) {
-  animation-delay: -0.144s;
-}
-
-.lds-roller div:nth-child(4):after {
-  top: 72px;
-  left: 40px;
-}
-
-.lds-roller div:nth-child(5) {
-  animation-delay: -0.18s;
-}
-
-.lds-roller div:nth-child(5):after {
-  top: 71px;
-  left: 32px;
-}
-
-.lds-roller div:nth-child(6) {
-  animation-delay: -0.216s;
-}
-
-.lds-roller div:nth-child(6):after {
-  top: 68px;
-  left: 24px;
-}
-
-.lds-roller div:nth-child(7) {
-  animation-delay: -0.252s;
-}
-
-.lds-roller div:nth-child(7):after {
-  top: 63px;
-  left: 17px;
-}
-
-.lds-roller div:nth-child(8) {
-  animation-delay: -0.288s;
-}
-
-.lds-roller div:nth-child(8):after {
-  top: 56px;
-  left: 12px;
-}
-
-@keyframes lds-roller {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .tienda {
   font-family: "Nunito", sans-serif;
 }
 
-.tienda .barraBusqueda {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: inherit;
-  justify-content: unset;
-  align-items: center;
-  background-color: #494c36;
-  color: #a9ac83;
-}
-
-.tienda .barraBusqueda .buscador {
-  display: flex;
-  gap: 1rem;
+.tienda .itemDetail {
+  padding: 2rem 5rem;
   justify-content: center;
-  align-items: inherit;
-  height: auto;
-  width: 80%;
+  justify-items: center;
+}
+
+.tienda .itemDetail__imgContainer {
+  position: relative;
+  padding-top: 100%;
 }
 
 @media (min-width: 992px) {
-  .tienda .barraBusqueda .buscador {
-    height: auto;
-    width: 50%;
+  .tienda .itemDetail__imgContainer {
+    padding-top: 0;
   }
 }
 
-.tienda .barraBusqueda .buscador .form-control:focus {
-  border-color: #a9ac83;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #a9ac83;
+.tienda .itemDetail__imgContainer img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
-.tienda .filtros {
-  padding: 1rem;
-}
-
-.tienda .filtros .categorias {
+.tienda .itemDetail__details {
   display: flex;
   flex-direction: column;
-  gap: inherit;
-  justify-content: unset;
-  align-items: unset;
 }
 
-.tienda .filtros .categorias .categoriaContenedor {
-  padding: 0.5rem;
+.tienda .itemDetail__details__title {
+  text-align: center;
+  font-size: 32px;
 }
 
-.tienda .filtros .categorias .categoriaContenedor .categoria {
-  padding-top: 0;
-  padding-bottom: 0.5rem;
-  font-size: 1rem;
-  list-style: none;
-  cursor: pointer;
+.tienda .itemDetail__details__description {
+  font-size: 20px;
 }
 
-@media (min-width: 992px) {
-  .tienda .filtros .categorias .categoriaContenedor .categoria {
-    padding: 0;
-    font-size: 1.3rem;
-  }
+.tienda .itemDetail__details__price {
+  font-size: 28px;
+  text-align: center;
 }
 
-.tienda .filtros .categorias .categoriaContenedor .categoria:hover {
-  -webkit-animation: fadeIn 0.9s;
-  animation: fadeIn 0.9s;
-  transform: skewX(-10deg);
+.tienda .itemDetail__selled {
+  display: flex;
+  flex-direction: column;
 }
 
-.tienda .filtros .categorias .categoriaContenedor .subcategorias {
-  display: none;
-  list-style: none;
-  padding-left: 0.5rem;
+.tienda .itemDetail__selled__yetInCart {
+  margin-top: 1rem;
+  align-self: center;
+  width: 20rem;
+  text-align: center;
+  background-color: #494c36;
+  color: black;
 }
 
-.tienda .filtros .categorias .categoriaContenedor .subcategorias h5 {
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
+.tienda .itemDetail__selled__finalizar,
+.tienda .itemDetail__selled__remove {
+  flex-basis: 45%;
+  margin-top: 1rem;
+  display: flex;
+  align-self: center;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #494c36;
+  color: black;
+  border-radius: 0.25rem;
 }
 
-.tienda .filtros .categorias .categoriaContenedor .subcategorias .subcategoria {
-  cursor: pointer;
-  padding-top: 0;
-  padding-bottom: 1rem;
+.tienda .itemDetail__selled__finalizar:hover,
+.tienda .itemDetail__selled__remove:hover {
+  background-color: #181912 !important;
+  color: #a9ac83 !important;
+  transform: skewX(-15deg);
 }
 
-@media (min-width: 992px) {
-  .tienda
-    .filtros
-    .categorias
-    .categoriaContenedor
-    .subcategorias
-    .subcategoria {
-    padding: 0;
-  }
+.tienda .itemDetail__volver {
+  padding: 0 2rem;
+  width: fit-content;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #494c36;
+  color: black;
+  border-radius: 0.25rem;
 }
 
-.tienda
-  .filtros
-  .categorias
-  .categoriaContenedor
-  .subcategorias
-  .subcategoria:hover {
-  -webkit-animation: fadeIn 0.9s;
-  animation: fadeIn 0.9s;
-  transform: skewX(-10deg);
+.tienda .itemDetail__volver:hover {
+  background-color: #181912 !important;
+  color: #a9ac83 !important;
+  transform: skewX(-15deg);
 }
 
 .tienda .grillaProductos {
