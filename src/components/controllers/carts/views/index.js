@@ -9,7 +9,8 @@ export default class CartViewController {
     try {
       let user = await req.user;
       let cart = await service.getCartByEmail(user.email);
-      res.render("cart", { cart: cart });
+      console.log(cart);
+      res.render("cart", { products: cart.products });
     } catch (err) {
       res.render("error", { erorr: err });
     }

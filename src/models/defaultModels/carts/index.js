@@ -12,10 +12,36 @@ export default class Carts {
       email: required ? Joi.string().email().required() : Joi.string().email(),
       products: required
         ? Joi.array()
-            .items(Joi.object({ _id: Joi.string(), quantity: Joi.number() }))
+            .items(
+              Joi.object({
+                _id: Joi.string().required(),
+                code: Joi.number().required(),
+                category: Joi.string().required(),
+                subcategory: Joi.string().required(),
+                brand: Joi.string().required(),
+                name: Joi.string().required(),
+                price: Joi.number().required(),
+                featured: Joi.string().required(),
+                thumbnail: Joi.string().required(),
+                stock: Joi.number().required(),
+                quantity: Joi.number().required(),
+              })
+            )
             .required()
         : Joi.array().items(
-            Joi.object({ _id: Joi.string(), quantity: Joi.number() })
+            Joi.object({
+              _id: Joi.string().required(),
+              code: Joi.number().required(),
+              category: Joi.string().required(),
+              subcategory: Joi.string().required(),
+              brand: Joi.string().required(),
+              name: Joi.string().required(),
+              price: Joi.number().required(),
+              featured: Joi.string().required(),
+              thumbnail: Joi.string().required(),
+              stock: Joi.number().required(),
+              quantity: Joi.number().required(),
+            })
           ),
       address: required ? Joi.string().required() : Joi.string(),
     });
