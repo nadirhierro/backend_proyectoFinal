@@ -21,7 +21,9 @@ export default class mongodbDaoCarts extends mongodbContainer {
     try {
       let cart = await this.model.findOne({ email: email });
       if (cart) {
-        return cart.toObject();
+        let clean = cart.toObject();
+        delete clean.__v;
+        return clean;
       } else {
         return false;
       }

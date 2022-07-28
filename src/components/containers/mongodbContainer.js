@@ -10,7 +10,11 @@ export default class mongodbContainer {
   async getAll() {
     try {
       let all = await this.model.find({});
-      let allObject = all.map((obj) => obj.toObject());
+      let allObject = all.map((obj) => {
+        let newObj = obj.toObject();
+        delete newObj.__v;
+        return newObj;
+      });
       return allObject;
     } catch (err) {
       this.logger.logDatabaseError(err);
@@ -54,7 +58,9 @@ export default class mongodbContainer {
     try {
       let element = await this.model.findById(id);
       if (element) {
-        return element.toObject();
+        let clean = element.toObject();
+        delete clean.__v;
+        return clean;
       } else {
         return false;
       }

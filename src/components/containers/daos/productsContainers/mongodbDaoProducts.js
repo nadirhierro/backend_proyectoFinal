@@ -21,7 +21,11 @@ export default class mongodbDaoProducts extends mongodbContainer {
     try {
       let products = await this.model.find({ category: category });
       if (products.length > 0) {
-        let allObject = products.map((obj) => obj.toObject());
+        let allObject = products.map((obj) => {
+          let newObj = obj.toObject();
+          delete newObj.__v;
+          return newObj;
+        });
         return allObject;
       } else {
         return products;
@@ -39,7 +43,11 @@ export default class mongodbDaoProducts extends mongodbContainer {
         subcategory: subcategory,
       });
       if (products.length > 0) {
-        let allObject = products.map((obj) => obj.toObject());
+        let allObject = products.map((obj) => {
+          let newObj = obj.toObject();
+          delete newObj.__v;
+          return newObj;
+        });
         return allObject;
       } else {
         return false;
@@ -49,4 +57,6 @@ export default class mongodbDaoProducts extends mongodbContainer {
       throw new Error("Database Error");
     }
   }
+
+  async takeProduct(id) {}
 }
