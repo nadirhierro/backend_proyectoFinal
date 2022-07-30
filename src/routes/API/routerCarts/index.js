@@ -9,7 +9,7 @@ let carts = new CartsController();
 
 routerCarts.get("/", carts.getAllCarts);
 routerCarts.get("/:id", carts.getCartById);
-routerCarts.get("/user", carts.userGetCart);
+routerCarts.get("/user/get", carts.userGetCart);
 routerCarts.post("/", carts.saveCart);
 routerCarts.put("/:id", carts.changeCartById);
 routerCarts.put("/:id/products/:productId", carts.addProduct);

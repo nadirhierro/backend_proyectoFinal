@@ -95,7 +95,7 @@ export default class apiCarts {
       this.getValidationId(cartId);
       this.getValidationId(productId);
       let cart = await this.getCartById(cartId);
-      let product = await products.getById(productId);
+      let product = await products.getProductById(productId);
       if (!cart || !product) return false;
       if (!cart.products.find((product) => product._id == productId)) {
         cart.products.push({

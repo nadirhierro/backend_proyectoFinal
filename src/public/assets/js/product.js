@@ -1,13 +1,12 @@
-let cart;
-fetch("http://localhost:8080/carts/user")
+let cartId;
+fetch("http://localhost:8080/api/carts/user/get")
   .then((res) => res.json())
-  .then((res) => (cart = res))
+  .then((res) => (cartId = res._id))
   .catch((err) => console.log(err));
 
 let Form = document.getElementsByName("itemCount");
 let form = Form[0];
 let productId = form.id;
-let cartId = cart.id;
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
