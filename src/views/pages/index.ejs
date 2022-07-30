@@ -4,14 +4,16 @@
   </head>
   <body>
     <header><%- include("../partials/headerAuth"); %></header>
-    <main class="container-fluid">
+    <main class="main">
       <%- include ("../partials/heroAuth"); %>
-      <div class="row justify-content-center">
-        <div class="col-6 d-flex flex-column bg-secondary">
+      <div class="row justify-content-center bienvenido">
+        <div class="col-6 d-flex flex-column">
           <h2 class="text-center mt-5 mb-5">Bienvenido!</h2>
           <div class="d-flex justify-content-center">
-            <a class="m-2 btn btn-primary" href="/login">Iniciar Sesión</a>
-            <a class="m-2 btn btn-primary" href="/signup">Registrarse</a>
+            <a class="m-2 btn bienvenido__boton" href="/login"
+              >Iniciar Sesión</a
+            >
+            <a class="m-2 btn bienvenido__boton" href="/signup">Registrarse</a>
           </div>
         </div>
       </div>

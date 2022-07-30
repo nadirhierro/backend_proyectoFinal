@@ -1,0 +1,24 @@
+.hero {
+  @include padding-y(7rem, 4rem);
+  @include fondoHero;
+  color: $amarillo;
+  .row {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    .bienvenida {
+      @include padding-y(0, 2rem);
+      font-weight: bold;
+      h2 {
+        font-size: 40px;
+      }
+    }
+    .cajaHeroLogo {
+      @include flexColumn(0, unset, center);
+      .heroLema {
+        font-weight: bold;
+        align-self: flex-end;
+      }
+    }
+  }
+}
