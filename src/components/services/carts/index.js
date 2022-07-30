@@ -1,9 +1,12 @@
 import daoFactory from "../../containers/daos/index.js";
 import Carts from "../../../models/defaultModels/carts/index.js";
+import apiProducts from "../products/index.js";
 import isValidObjectId from "../../../models/defaultModels/ObjectID/index.js";
 import Logger from "../../../utils/logger/index.js";
 
 let factory = new daoFactory();
+
+let products = apiProducts.getInstance();
 
 let instance = null;
 
@@ -82,6 +85,54 @@ export default class apiCarts {
       this.getValidation(cart, false);
       let changed = await this.db.change(id, cart);
       return changed;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async addProduct(cartId, productId, quantity) {
+    try {
+      this.getValidationId(cartId);
+      this.getValidationId(productId);
+      let cart = await this.getCartById(cartId);
+      let product = await products.getById(productId);
+      if (!cart || !product) return false;
+      if (!cart.products.find((product) => product._id == productId)) {
+        cart.products.push({
+          _id: product._id,
+          name: product.name,
+          price: product.price,
+          quantity: quantity,
+        });
+        let changed = await this.changeCart(cartId, {
+          products: cart.products,
+        });
+        return changed;
+      } else {
+        return false;
+      }
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  async deleteProduct(cartId, productId) {
+    try {
+      this.getValidationId(cartId);
+      this.getValidationId(productId);
+      let cart = await this.getCartById(cartId);
+      if (!cart) return false;
+      let product = cart.products.find((product) => product._id == productId);
+      if (product) {
+        let index = cart.products.indexOf(product);
+        cart.products.splice(index, 1);
+        let changed = await this.changeCart(cartId, {
+          products: cart.products,
+        });
+        return changed;
+      } else {
+        return false;
+      }
     } catch (err) {
       throw err;
     }

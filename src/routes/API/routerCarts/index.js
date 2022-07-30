@@ -9,8 +9,11 @@ let carts = new CartsController();
 
 routerCarts.get("/", carts.getAllCarts);
 routerCarts.get("/:id", carts.getCartById);
+routerCarts.get("/user", carts.userGetCart);
 routerCarts.post("/", carts.saveCart);
 routerCarts.put("/:id", carts.changeCartById);
+routerCarts.put("/:id/products/:productId", carts.addProduct);
+routerCarts.delete("/:id/products/:productId", carts.deleteProduct);
 routerCarts.delete("/", carts.deleteAll);
 routerCarts.delete("/:id", carts.deleteById);
 

@@ -106,7 +106,7 @@
   <div class="row filtrosProductos">
     <div class="container-fluid tienda">
       {{#with product}}
-        <div id="{{this._id}}" className="row itemDetail">
+        <div className="row itemDetail">
           <div className="col-12 col-md-6 itemDetail__imgContainer">
             <img
               src="{{this.thumbnail}}"
@@ -132,7 +132,7 @@
           <div className="col-12 d-flex justify-content-center pt-4">
             {{#if this.stock > 0}}
               <div className="itemCount">
-                <form id="itemCount">
+                <form id="{{this._id}}" name="itemCount">
                   <label for="quantity">Cantidad:</label>
                   <input type="number" id="quantity" name="quantity" min="1" max="{{stock}}" step="1" value="1">
                 </form>

@@ -57,6 +57,21 @@ export default class CartsController {
     }
   }
 
+  async userGetCart(req, res, next) {
+    try {
+      let user = await req.user;
+      let cart = await service.getCartByEmail(user.email);
+      res.status(200).json(cart);
+    } catch (err) {
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
+    }
+  }
+
   async saveCart(req, res, next) {
     try {
       let user = await req.user;
@@ -87,6 +102,39 @@ export default class CartsController {
       } else {
         res.status(200).json({ message: `Cart with id ${id} not found` });
       }
+    } catch (err) {
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
+    }
+  }
+
+  async addProduct(req, res, next) {
+    try {
+      let cartId = req.params.id;
+      let productId = req.params.productId;
+      let quantity = req.query.quantity;
+      let added = await service.addProduct(cartId, productId, quantity);
+      res.status(200).json({ status: added });
+    } catch (err) {
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
+    }
+  }
+
+  async deleteProduct(req, res, next) {
+    try {
+      let cartId = req.params.id;
+      let productId = req.params.productId;
+      let deleted = await service.deleteProduct(cartId, productId);
+      res.status(200).json({ status: deleted });
     } catch (err) {
       if (err.message.indexOf("Database error") > -1) {
         res.status(500);
