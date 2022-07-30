@@ -162,6 +162,50 @@
   color: #a9ac83;
 }
 
+.login {
+  background-color: #494c36;
+  color: #a9ac83;
+}
+
+.login__boton {
+  font-size: 18px;
+  color: #a9ac83;
+  font-weight: bold;
+}
+
+.login__boton:hover {
+  color: #a9ac83;
+  background-color: #181912;
+  transform: skewX(-10deg);
+  transition: 0.4s;
+}
+
+.login__boton:focus {
+  color: #a9ac83;
+}
+
+.signup {
+  background-color: #494c36;
+  color: #a9ac83;
+}
+
+.signup__boton {
+  font-size: 18px;
+  color: #a9ac83;
+  font-weight: bold;
+}
+
+.signup__boton:hover {
+  color: #a9ac83;
+  background-color: #181912;
+  transform: skewX(-10deg);
+  transition: 0.4s;
+}
+
+.signup__boton:focus {
+  color: #a9ac83;
+}
+
 .main {
   min-height: 120vh;
   font-family: "Nunito", sans-serif;

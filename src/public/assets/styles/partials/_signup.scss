@@ -1,0 +1,18 @@
+.signup {
+  background-color: $verde;
+  color: $amarillo;
+  &__boton {
+    font-size: 18px;
+    color: $amarillo;
+    font-weight: bold;
+    &:hover {
+      color: $amarillo;
+      background-color: $verdeOscuro;
+      transform: skewX(-10deg);
+      transition: 0.4s;
+    }
+    &:focus {
+      color: $amarillo;
+    }
+  }
+}
