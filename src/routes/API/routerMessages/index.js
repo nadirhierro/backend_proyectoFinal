@@ -9,6 +9,7 @@ let messages = new MessagesController();
 
 routerMessages.get("/", messages.getMessages);
 routerMessages.get("/:email", messages.getMessagesByEmail);
-routerMessages.post("/", messages.saveMessage);
+routerMessages.post("/users", messages.userMessage);
+routerMessages.post("/admins", messages.adminMessage);
 
 export default routerMessages;

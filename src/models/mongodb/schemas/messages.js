@@ -1,15 +1,12 @@
 import Joi from "joi";
 
-let author = Joi.object({
-  email: Joi.string().email().required(),
-  alias: Joi.string().required(),
-}).required();
-let type = Joi.string().required();
+let email = Joi.string().email().required();
+let type = Joi.string().valid("user", "system").required();
 let timestamp = Joi.date().timestamp().required();
 let message = Joi.string().required();
 
 let messageSchema = {
-  author,
+  email,
   type,
   timestamp,
   message,

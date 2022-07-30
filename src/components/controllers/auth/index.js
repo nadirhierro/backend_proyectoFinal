@@ -8,7 +8,7 @@ export default class AuthController {
     if (req.isAuthenticated()) {
       next();
     } else {
-      res.redirect("/index");
+      res.status(401).redirect("/index");
     }
   }
 
@@ -16,24 +16,24 @@ export default class AuthController {
     if (!req.isAuthenticated()) {
       next();
     } else {
-      res.redirect("/products");
+      res.status(200).redirect("/products");
     }
   }
 
   redirectIndex(req, res, next) {
-    res.redirect("/index");
+    res.status(200).redirect("/index");
   }
 
   renderIndex(req, res, next) {
-    res.render("index");
+    res.status(200).render("index");
   }
 
   renderLogin(req, res, next) {
-    res.render("login");
+    res.status(200).render("login");
   }
 
   renderSignup(req, res, next) {
-    res.render("signup");
+    res.status(200).render("signup");
   }
 
   async makeLogout(req, res, next) {
@@ -41,13 +41,13 @@ export default class AuthController {
       let user = await req.user;
       req.session.destroy((err) => {
         if (!err) {
-          res.render("logout", { name: user.name });
+          res.status(200).render("logout", { name: user.name });
         } else {
-          res.render("failLogout", { error: err });
+          res.status(500).render("failLogout", { error: err });
         }
       });
     } catch (err) {
-      res.render("failLogout", { error: err });
+      res.status(500).render("failLogout", { error: err });
     }
   }
 
@@ -61,7 +61,7 @@ export default class AuthController {
         if (err) {
           return next(err);
         }
-        return res.redirect("/products");
+        return res.status(200).redirect("/products");
       });
     })(req, res, next);
   }
@@ -76,7 +76,7 @@ export default class AuthController {
         if (err) {
           return next(err);
         }
-        return res.redirect("/products");
+        return res.status(200).redirect("/products");
       });
     })(req, res, next);
   }

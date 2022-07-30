@@ -15,7 +15,6 @@ export default class MessagesController {
       } else {
         res.status(400);
       }
-      res.json({ error: err.message });
     }
   }
 
@@ -30,14 +29,20 @@ export default class MessagesController {
       } else {
         res.status(400);
       }
-      res.json({ error: err.message });
     }
   }
 
-  async saveMessage(req, res, next) {
+  async userMessage(req, res, next) {
     try {
-      let message = req.body;
-      let saved = await service.saveMessage(message);
+      let user = await req.user;
+      let email = user.email;
+      let type = "user";
+      let message = req.body.message;
+      let saved = await service.saveMessage({
+        email: email,
+        type: type,
+        message: message,
+      });
       res.status(200).json(saved);
     } catch (err) {
       if (err.message.indexOf("Database error") > -1) {
@@ -45,7 +50,25 @@ export default class MessagesController {
       } else {
         res.status(400);
       }
-      res.json({ error: err.message });
+    }
+  }
+
+  async adminMessage(req, res, next) {
+    try {
+      let type = "admin";
+      let data = req.body;
+      let saved = await service.saveMessage({
+        email: data.email,
+        type: type,
+        message: data.message,
+      });
+      res.status(200).json(saved);
+    } catch (err) {
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
     }
   }
 }

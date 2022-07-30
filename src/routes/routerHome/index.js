@@ -1,6 +1,7 @@
 import express from "express";
 import routerProducts from "./routerProducts/index.js";
 import routerCart from "./routerCart/index.js";
+import routerChat from "./routerChat/index.js";
 import AuthController from "../../components/controllers/auth/index.js";
 
 const { Router } = express;
@@ -26,5 +27,7 @@ routerHome.post("/signup", auth.uploadAvatar, auth.makeSignup);
 routerHome.use("/products", auth.isAuth, routerProducts);
 
 routerHome.use("/cart", auth.isAuth, routerCart);
+
+routerHome.use("/chat", auth.isAuth, routerChat);
 
 export default routerHome;

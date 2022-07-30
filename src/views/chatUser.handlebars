@@ -93,7 +93,7 @@
     <div class="row user justify-content-center">
       <div class="col-12 d-flex flex-column align-items-center w-25">
         <h4>Usuario: {{name}}</h4>
-        <p>Mail: {{email}}</p>
+        <p id="email">{{email}}</p>
         <img src={{thumbnail}} class="img-fluid avatar p-2" />
         <a
           href="http://localhost:8080/logout"
@@ -101,43 +101,20 @@
         >Logout</a>
       </div>
     </div>
-  </div>
-  <div class="row filtrosProductos">
-    <div class="container-fluid tienda">
-      <h2 class="text-center">{{category}}</h2>
-      <div class="col grillaProductos">
-        {{#if products}}
-          {{#each products}}
-            {{#with this}}
-              <div id="{{name}}" class="tarjeta botonAgregar">
-                <div class="tarjetaCuerpo">
-                  <div class="cajaImagen">
-                    <img
-                      class="img-fluid imagen"
-                      src="{{this.thumbnail}}"
-                      alt="{{this.name}}"
-                    />
-                  </div>
-                  <div class="nombre">
-                    <p>{{this.name}}</p>
-                  </div>
-                  <div class="cuotas">
-                    <p class="texto">18 cuotas s/interés de</p>
-                    <p class="texto precioCuotas">
-                      1234
-                    </p>
-                  </div>
-                  <div class="precio"><p class="texto">Final: ${{this.price}}</p></div>
-                  <div class="agregar"><a
-                      href="/products/{{this._id}}"
-                      class="button"
-                    >Ver Producto</a></div>
-                </div>
-              </div>
-            {{/with}}
-          {{/each}}
-        {{/if}}
-      </div>
+    <div class="col-12 d-flex justify-content-center">
+      <form id="messages" class="d-flex flex-column justify-content-center">
+        <div class="mb-3 d-flex flex-column">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <input type="text" placeholder="Ingrese su mensaje" name="mensaje" />
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Enviar mensaje
+        </button>
+      </form>
     </div>
+    <div
+      class="col-6 d-flex flex-column justify-content-center text-center mt-5"
+      id="mensajes"
+    ></div>
   </div>
 </main>

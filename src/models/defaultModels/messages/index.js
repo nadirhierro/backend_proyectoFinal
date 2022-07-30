@@ -1,19 +1,16 @@
 import Joi from "joi";
 
 export default class Messages {
-  constructor(author, type, message) {
-    this.author = author;
+  constructor(email, type, message) {
+    this.email = email;
     this.type = type;
     this.message = message;
   }
   // Valdiación de la data
   static validate(message) {
     const messageSchema = Joi.object({
-      author: Joi.object({
-        email: Joi.string().email().required(),
-        alias: Joi.string().required(),
-      }).required(),
-      type: Joi.string().required(),
+      email: Joi.string().email().required(),
+      type: Joi.string().valid("user", "system").required(),
       message: Joi.string().required(),
     });
     const { error } = messageSchema.validate(message);
