@@ -107,7 +107,7 @@
     <h4 className="col-12 text-center">Chequeá tu carrito...</h4>
   </div>
   <div className="row justify-content-center">
-    <table className="table">
+    <table id="{{cartId}}" name="cart" className="table">
       <thead className="thead-dark">
         <tr>
           <th className="columnaImagen" scope="col"></th>
@@ -126,7 +126,7 @@
           <th scope="col"></th>
         </tr>
         {{#each products}}
-          <tr className="fila">
+          <tr id="product-{{this._id}}" className="fila">
             <th className="cajaImagenTabla" scope="row">
               <img src="{{this.thumbnail}}" alt="{{this.name}}" />
             </th>
@@ -134,7 +134,7 @@
             <td>{{this.quantity}}</td>
             <td>${{this.price}}</td>
             <td>
-              <button className="btn">
+              <button id="{{this._id}}" className="btn" name="deleteProduct">
                 Eliminar
               </button>
             </td>
@@ -144,3 +144,4 @@
     </table>
   </div>
 </main>
+<script src="/assets/js/cart.js"></script>

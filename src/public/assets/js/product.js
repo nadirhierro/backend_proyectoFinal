@@ -4,7 +4,8 @@ fetch("http://localhost:8080/carts/user")
   .then((res) => (cart = res))
   .catch((err) => console.log(err));
 
-let form = document.getElementsByName("itemCount")[0];
+let Form = document.getElementsByName("itemCount");
+let form = Form[0];
 let productId = form.id;
 let cartId = cart.id;
 
