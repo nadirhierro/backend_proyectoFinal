@@ -4,7 +4,7 @@ export default class ChatController {
   async renderChatUser(req, res, next) {
     try {
       let user = await req.user;
-      res.status(200).render("pages/chatUser", {
+      res.status(200).render("pages/home/chatUser", {
         email: user.email,
         name: user.name,
         thumbnail: user.thumbnail,
@@ -17,7 +17,7 @@ export default class ChatController {
   async renderChatAdmin(req, res, next) {
     try {
       let user = await req.user;
-      res.status(200).render("pages/chatAdmin", {
+      res.status(200).render("pages/home/chatAdmin", {
         email: user.email,
         name: user.name,
         thumbnail: user.thumbnail,
