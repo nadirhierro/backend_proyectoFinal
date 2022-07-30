@@ -1,0 +1,18 @@
+<html lang="en">
+  <head>
+    <%- include("../partials/head"); %>
+  </head>
+  <body>
+    <main class="container-fluid">
+      <header><%- include("../../partials/headerAuth"); %></header>
+      <div class="row">
+        <h4 class="col-12 text-center mt-5">Hasta pronto <% name %></h4>
+      </div>
+      <script>
+        setTimeout(function () {
+          window.location.replace("http://localhost:8080/");
+        }, 5000);
+      </script>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<% if (products.lenght > 0) { %>
+<table id="<%= cartId %>" name="cart" className="table">
+  <thead className="thead-dark">
+    <tr>
+      <th className="columnaImagen" scope="col"></th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Quitar</th>
+    </tr>
+  </thead>
+  <tbody className="tbody">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Total</th>
+      <th scope="col">$</th>
+      <th scope="col"></th>
+    </tr>
+    <% products.forEach(function(product){ %> <%- include("./cartProduct",
+    {product:product}) %> <% }); %>
+  </tbody>
+</table>
+<% } else { %>
+<h2>No tenés productos en tu carrito</h2>
+<a class="btn btn-primary" href="/products">Ir a tienda</h4>
+<% } %>

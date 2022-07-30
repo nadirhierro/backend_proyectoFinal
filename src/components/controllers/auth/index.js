@@ -25,15 +25,15 @@ export default class AuthController {
   }
 
   renderIndex(req, res, next) {
-    res.status(200).render("index");
+    res.status(200).render("pages/index");
   }
 
   renderLogin(req, res, next) {
-    res.status(200).render("login");
+    res.status(200).render("pages/login");
   }
 
   renderSignup(req, res, next) {
-    res.status(200).render("signup");
+    res.status(200).render("pages/signup");
   }
 
   async makeLogout(req, res, next) {
@@ -41,13 +41,13 @@ export default class AuthController {
       let user = await req.user;
       req.session.destroy((err) => {
         if (!err) {
-          res.status(200).render("logout", { name: user.name });
+          res.status(200).render("pages/logout", { name: user.name });
         } else {
-          res.status(500).render("failLogout", { error: err });
+          res.status(500).render("pages/fails/failLogout", { message: err });
         }
       });
     } catch (err) {
-      res.status(500).render("failLogout", { error: err });
+      res.status(500).render("pages/fails/failLogout", { message: err });
     }
   }
 
@@ -56,7 +56,8 @@ export default class AuthController {
       if (err) {
         return next(err);
       }
-      if (!user) return res.render("faillogin", { message: info.message });
+      if (!user)
+        return res.render("pages/fails/faillogin", { message: info.message });
       req.login(user, function (err) {
         if (err) {
           return next(err);
@@ -71,7 +72,8 @@ export default class AuthController {
       if (err) {
         return next(err);
       }
-      if (!user) return res.render("failsignup", { message: info.message });
+      if (!user)
+        return res.render("pages/fails/failsignup", { message: info.message });
       req.login(user, function (err) {
         if (err) {
           return next(err);

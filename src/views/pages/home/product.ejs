@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    <%- include("../../partials/head"); %>
+  </head>
+  <body>
+    <header><%- include("../../partials/headerUsers"); %></header>
+    <main class="main">
+      <%- include("../../partials/hero"); %>
+      <div class="row filtrosProductos">
+        <div class="container-fluid tienda">
+          <% if (product) { %> <%-
+          include('../../partials/products/productDetail', {product: product});
+          %> <% } else { %>
+          <h2>No existe el producto!</h2>
+          <% } %>
+        </div>
+      </div>
+    </main>
+    <script src="/assets/js/product.js"></script>
+  </body>
+</html>

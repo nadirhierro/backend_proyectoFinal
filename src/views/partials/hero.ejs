@@ -1,0 +1,30 @@
+<div class="container-fluid hero">
+  <div class="row justify-content-center">
+    <div
+      class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4 cajaHeroLogo animate__animated animate__fadeIn"
+    >
+      <img
+        class="img-fluid heroLogo"
+        src="/assets/img/logo_white_large.png"
+        alt="Logo Sincopado"
+      />
+      <p class="heroLema">Siempre la mejor atención</p>
+    </div>
+    <div
+      class="col-12 col-md-12 col-md-6 col-lg-6 col-xl-4 texto animate__animated animate__fadeIn bienvenida pt-5"
+    >
+      <h2>Bienvenido a nuestra tienda</h2>
+      <p>¡Aprovechá todos nuestros productos con 18 cuotas sin interés!</p>
+    </div>
+  </div>
+  <div class="row user justify-content-center">
+    <div class="col-12 d-flex flex-column align-items-center w-25">
+      <h4>Usuario: <%= name %></h4>
+      <p>Mail: <%= email %></p>
+      <img src="<%= thumbnail %>" class="img-fluid avatar p-2" />
+      <a href="http://localhost:8080/logout" class="btn btn-primary logout"
+        >Logout</a
+      >
+    </div>
+  </div>
+</div>

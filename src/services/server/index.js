@@ -4,7 +4,6 @@ import { initSocket } from "../sockets/index.js";
 import cors from "cors";
 import { config, db } from "../../config/index.js";
 import router from "../../routes/index.js";
-import handlebars from "express-handlebars";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
@@ -24,10 +23,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./src/public"));
 app.use(cors(`${config.cors}`));
 
-// Motor de plantilla - handlebars
-app.engine("handlebars", handlebars.engine());
+// Motor de plantilla - ejs
+app.set("view engine", "ejs");
 app.set("views", "./src/views");
-app.set("view engine", "handlebars");
 
 // Cookies y Session con passport
 app.use(cookieParser());

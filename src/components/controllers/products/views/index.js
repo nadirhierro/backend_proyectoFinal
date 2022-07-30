@@ -9,34 +9,50 @@ export default class ProductsViewController {
     try {
       let user = await req.user;
       let products = await service.getProducts();
-      res.render("products", {
+      let category = req.params.category;
+      res.render("pages/home/products", {
         name: user.name,
         email: user.email,
         thumbnail: user.avatar,
         products: products,
+        category: category,
       });
     } catch (err) {
-      res.render("error", { error: err });
+      res.render("pages/error", { message: err });
     }
   }
 
   async showProductsByCategory(req, res, next) {
     try {
+      let user = await req.user;
       let category = req.params.category;
       let products = await service.getProductsByCategory(category);
-      res.render("products", { products: products });
+      res.render("pages/home/products", {
+        name: user.name,
+        email: user.email,
+        thumbnail: user.avatar,
+        products: products,
+        category: category,
+      });
     } catch (err) {
-      res.render("error", { error: err });
+      res.render("pages/error", { message: err });
     }
   }
 
   async showProduct(req, res, next) {
     try {
+      let user = await req.user;
       let id = req.params.id;
       let product = await service.getProductById(id);
-      res.render("product", { product: product });
+      res.render("pages/home/product", {
+        name: user.name,
+        email: user.email,
+        thumbnail: user.avatar,
+        product: product,
+      });
     } catch (err) {
-      res.render("error", { error: err });
+      console.log(err);
+      res.render("pages/error", { message: err });
     }
   }
 }

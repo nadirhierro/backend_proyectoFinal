@@ -1,0 +1,23 @@
+<html lang="en">
+  <head>
+    <%- include("../../partials/head"); %>
+  </head>
+  <body>
+    <header><%- include("../../partials/headerUsers"); %></header>
+    <main class="main">
+      <%- include("../../partials/hero"); %>
+      <div className="row justify-content-center tituloFinalizar">
+        <h2 className="col-12 text-center">¡Últimos pasos!</h2>
+        <h4 className="col-12 text-center">Chequeá tu carrito...</h4>
+      </div>
+      <div className="row justify-content-center">
+        <% if (cartId) { %>
+        <%- include("../../partials/cart/cartTable"); %>
+        <% } else { %>
+            <h2>No abriste el carrito!</h2>
+            <a class="btn btn-primary" href="/products">Ir a tienda</h4>
+        <% } %>
+      </div>
+    </main>
+  </body>
+</html>

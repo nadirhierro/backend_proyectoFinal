@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <%- include("../../partials/head"); %>
+  </head>
+  <body>
+    <header><%- include("../../partials/headerUsers"); %></header>
+    <main class="main">
+      <%- include("../../partials/hero"); %>
+      <div class="row filtrosProductos">
+        <div class="container-fluid tienda">
+          <% if (category) { %>
+          <h2 class="text-center"><%= category %></h2>
+          <% } else { %>
+          <h2 class="text-center">Todos los productos</h2>
+          <% } %>
+          <div class="col grillaProductos">
+            <% if ((products)) { %> <%-
+            include("../../partials/products/productGrid",
+            {products:products});%> <% }%>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
