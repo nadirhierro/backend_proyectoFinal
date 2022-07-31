@@ -6,7 +6,7 @@
     <header><%- include("../../partials/headerUsers"); %></header>
     <main class="main">
       <%- include("../../partials/hero"); %>
-      <div class="container-fluid tienda">
+      <div class="container-fluid itemDetailContainer">
         <% if (product) { %> <%-
         include('../../partials/products/productDetail', {product: product}); %>
         <% } else { %>

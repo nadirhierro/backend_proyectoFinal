@@ -21,4 +21,23 @@
       }
     }
   }
+  .logout {
+    font-size: 18px;
+    color: $amarillo;
+    font-weight: bold;
+    &:hover {
+      color: $amarillo;
+      background-color: $verdeOscuro;
+      transform: skewX(-10deg);
+      transition: 0.4s;
+    }
+    &:focus {
+      color: $amarillo;
+    }
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
 }

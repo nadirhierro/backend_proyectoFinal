@@ -1,28 +1,28 @@
-<div className="row itemDetail">
-  <div className="col-12 col-md-6 itemDetail__imgContainer">
+<div class="row itemDetail">
+  <div class="col-12 col-md-6 itemDetail__imgContainer">
     <img
       src="<%= product.thumbnail %>"
       alt="<%= product.name %>"
-      className="img-fluid productImage"
+      class="img-fluid productImage"
     />
   </div>
-  <div className="col-12 col-md-6 col-xxl-4 itemDetail__details">
-    <h4 id="<%= product.name %>" className="itemDetail__details__title">
+  <div class="col-12 col-md-6 col-xxl-4 itemDetail__details">
+    <h4 id="<%= product.name %>" class="itemDetail__details__title">
       <%= product.name %>
     </h4>
-    <p className="itemDetail__details__description">
+    <p class="itemDetail__details__description">
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus ab
       ut recusandae dolorem cumque perspiciatis assumenda ea reiciendis, nulla
       possimus ducimus voluptatem ipsum, nostrum dicta earum molestiae atque in
       excepturi blanditiis praesentium ullam laboriosam nobis mollitia!
       Exercitationem accusantium nam suscipit!
     </p>
-    <span id="<%= product.price %>" className="itemDetail__details__price">
+    <span id="<%= product.price %>" class="itemDetail__details__price">
       $ <%= product.price %>
     </span>
   </div>
-  <div className="col-12 d-flex justify-content-center pt-4">
-    <div className="itemCount">
+  <div class="col-12 d-flex justify-content-center pt-4">
+    <div class="itemCount">
       <form id="<%= product._id %>" name="itemCount">
         <label for="quantity">Cantidad:</label>
         <input
@@ -34,7 +34,7 @@
           step="1"
           value="1"
         />
-        <button class="btn btn-primary">Agregar</button>
+        <button class="btn itemCount__button">Agregar</button>
       </form>
     </div>
   </div>
