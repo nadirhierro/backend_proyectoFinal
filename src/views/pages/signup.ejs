@@ -120,7 +120,9 @@
                 type="file"
               />
             </div>
-            <button type="submit" class="btn signup__boton">Registrarse</button>
+            <button id="button" type="submit" class="btn signup__boton">
+              Registrarse
+            </button>
           </form>
         </div>
       </div>
@@ -129,14 +131,17 @@
       let password = document.getElementById("password");
       let confirm_password = document.getElementById("confirm_password");
       let message = document.getElementById("message");
+      let btn = document.getElementById("button");
 
       function validatePassword() {
         if (password.value != confirm_password.value) {
           message.innerHTML = "Las contraseñas no coinciden";
           message.style.color = "red";
+          btn.disabled = true;
         } else {
           message.innerHTML = "Las contraseñas coinciden";
           message.style.color = "rgb(169, 172, 131)";
+          btn.disabled = false;
         }
       }
 
