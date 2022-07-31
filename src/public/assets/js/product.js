@@ -18,7 +18,6 @@ form.addEventListener("submit", (event) => {
       .then((res) => res.json())
       .then((res) => {
         cartId = res._id;
-        console.log(res._id);
         fetch(
           `http://localhost:8080/api/carts/${cartId.toString()}/products/${productId.toString()}?quantity=${quantity}`,
           {
@@ -48,6 +47,7 @@ form.addEventListener("submit", (event) => {
     )
       .then((res) => res.json())
       .then((res) => {
+        console.log(res);
         let itemCount = document.getElementsByClassName("itemCount")[0];
         if (res) {
           itemCount.innerHTML = `<h4>Producto agregado al carrito</h4>`;

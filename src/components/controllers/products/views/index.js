@@ -51,7 +51,6 @@ export default class ProductsViewController {
         product: product,
       });
     } catch (err) {
-      console.log(err);
       res.render("pages/error", { message: err });
     }
   }

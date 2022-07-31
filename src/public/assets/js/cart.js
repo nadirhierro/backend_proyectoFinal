@@ -8,7 +8,6 @@ console.log(deleteProduct);
 deleteProduct.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log("hola");
     let productId = event.target.id;
     fetch(`http://localhost:8080/api/carts/${cartId}/products/${productId}`, {
       method: "DELETE",

@@ -105,6 +105,7 @@ export default class apiCarts {
           thumbnail: product.thumbnail,
           quantity: quantity,
         });
+        console.log(cart);
         let changed = await this.changeCart(cartId, {
           products: cart.products,
         });

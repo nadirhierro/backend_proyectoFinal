@@ -40,7 +40,7 @@ export default class fileContainer {
       let data = await this.getAll();
       let id = ObjectID();
       let newObject = {
-        id: id,
+        _id: id,
         timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
         ...obj,
       };
@@ -53,15 +53,17 @@ export default class fileContainer {
     }
   }
 
-  async change(obj) {
+  async change(id, obj) {
     try {
       let data = await this.getAll();
-      let objInData = data.find((element) => element.id == obj.id);
+      let objInData = data.find((element) => element._id == id);
       if (objInData) {
         let newObject = {
-          ...obj,
+          ...objInData,
           timestamp: moment().format("DD/MM/YYYY HH:MM:SS"),
+          ...obj,
         };
+        console.log(newObject);
         data.splice(data.indexOf(objInData), 1, newObject);
         await this.write(data);
         return newObject;
@@ -77,7 +79,7 @@ export default class fileContainer {
   async getById(id) {
     try {
       let data = await this.getAll();
-      let element = data.find((obj) => obj.id == id);
+      let element = data.find((obj) => obj._id == id);
       if (element) {
         return element;
       } else {
@@ -92,8 +94,8 @@ export default class fileContainer {
   async deleteById(id) {
     try {
       let data = await this.getAll();
-      if (data.find((item) => item.id == id)) {
-        let newData = data.filter((data) => data.id != id);
+      if (data.find((item) => item._id == id)) {
+        let newData = data.filter((data) => data._id != id);
         await this.write(newData);
         return true;
       } else {

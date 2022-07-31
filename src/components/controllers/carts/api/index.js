@@ -136,7 +136,7 @@ export default class CartsController {
       let productId = req.params.productId;
       let quantity = req.query.quantity;
       let added = await service.addProduct(cartId, productId, quantity);
-      res.status(200).json({ status: added });
+      res.status(200).json({ added });
     } catch (err) {
       if (err.message.indexOf("Database error") > -1) {
         res.status(500);
