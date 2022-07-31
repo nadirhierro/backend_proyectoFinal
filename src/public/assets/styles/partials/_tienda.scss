@@ -1,37 +1,6 @@
 .main {
   min-height: 120vh; // para que la barra de scroll ya aparezca en el medio y no entorpezca las animaciones
   font-family: $nunito;
-  .cajaCompraRealizada {
-    @include fondoVerde;
-  }
-  .compraRealizada {
-    @include flexColumn(0.2rem, center, center);
-    font-size: 1.2rem;
-  }
-}
-.hero {
-  @include padding-y(7rem, 4rem);
-  @include fondoHero;
-  color: $amarillo;
-  .row {
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    .bienvenida {
-      @include padding-y(0, 2rem);
-      font-weight: bold;
-      h2 {
-        font-size: 40px;
-      }
-    }
-    .cajaHeroLogo {
-      @include flexColumn(0, unset, center);
-      .heroLema {
-        font-weight: bold;
-        align-self: flex-end;
-      }
-    }
-  }
 }
 .tienda {
   font-family: $nunito;
@@ -89,12 +58,13 @@
           font-size: 0.7rem;
           max-height: 50px;
         }
-
         .agregar {
           @include padding-x(0.5rem, 0.5rem);
           margin-top: 0.5rem;
           align-self: center;
           font-weight: bold;
+          text-decoration: none;
+          color: $verde;
         }
         &:hover .agregar {
           @include fondoVerde;

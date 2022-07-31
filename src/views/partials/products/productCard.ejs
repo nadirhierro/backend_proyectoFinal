@@ -1,5 +1,5 @@
 <% if (product) { %>
-<div id="<%= product._id %>" class="tarjeta botonAgregar">
+<div id="<%= product._id %>" class="tarjeta">
   <div class="tarjetaCuerpo">
     <div class="cajaImagen">
       <img
@@ -13,14 +13,12 @@
     </div>
     <div class="cuotas">
       <p class="texto">18 cuotas s/interés de</p>
-      <p class="texto precioCuotas">1234</p>
+      <p class="texto precioCuotas">$ <%= (product.price / 18).toFixed(2) %></p>
     </div>
     <div class="precio">
-      <p class="texto">Final: <%= product.price %></p>
+      <p class="texto">Final: $ <%= product.price %></p>
     </div>
-    <div class="agregar">
-      <a href="/products/<%= product._id %>" class="button">Ver Producto</a>
-    </div>
+    <a href="/products/<%= product._id %>" class="agregar">Ver Producto</a>
   </div>
 </div>
 <% }%>
