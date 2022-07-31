@@ -7,7 +7,7 @@ export default class ChatController {
       res.status(200).render("pages/home/chatUser", {
         email: user.email,
         name: user.name,
-        thumbnail: user.thumbnail,
+        thumbnail: user.avatar,
       });
     } catch (err) {
       res.status(500).render("pages/error", { message: err });
@@ -20,7 +20,7 @@ export default class ChatController {
       res.status(200).render("pages/home/chatAdmin", {
         email: user.email,
         name: user.name,
-        thumbnail: user.thumbnail,
+        thumbnail: user.avatar,
       });
     } catch (err) {
       res.status(500).render("pages/error", { message: err });
