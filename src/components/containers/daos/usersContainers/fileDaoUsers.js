@@ -5,7 +5,7 @@ let instance = null;
 export default class fileDaoUsers extends fileContainer {
   constructor() {
     super();
-    this.fileName = "./data/users.json";
+    this.fileName = "./src/data/users.json";
   }
 
   // Método para devolver instancia una sola vez

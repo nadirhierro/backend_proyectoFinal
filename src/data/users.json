@@ -1,0 +1,18 @@
+[
+  {
+    "_id": "62e678095b58eab597e11ba8",
+    "email": "nadir.hierro@gmail.com",
+    "password": {
+      "iv": "ad5076a704b269b5b411ff3cf3115c1e",
+      "content": "887181f8eaf0065100c5a0"
+    },
+    "name": "Nadir",
+    "surname": "Hierro",
+    "alias": "Medi",
+    "age": "31",
+    "address": "Av. Federico Lacroze 3336",
+    "phone": "1151804953",
+    "avatar": "/assets/avatars/nadir.hierro@gmail.com-avatar.jpg",
+    "isAdmin": true
+  }
+]

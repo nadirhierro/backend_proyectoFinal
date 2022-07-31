@@ -18,6 +18,8 @@ import { config } from "../../../config/index.js";
 // Container type desde config-args
 let container_type = config.container_type;
 
+console.log(container_type);
+
 export default class daoFactory {
   createCartsDaoDB() {
     if (container_type == "file") return fileDaoCarts.getInstance();
