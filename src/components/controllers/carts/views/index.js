@@ -9,7 +9,6 @@ export default class CartViewController {
     try {
       let user = await req.user;
       let cart = await service.getCartByEmail(user.email);
-      console.log(cart.products);
       res.render("pages/home/cart", {
         name: user.name,
         email: user.email,

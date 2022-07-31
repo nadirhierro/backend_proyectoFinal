@@ -99,9 +99,10 @@ export default class apiCarts {
       if (!cart || !product) return false;
       if (!cart.products.find((product) => product._id == productId)) {
         cart.products.push({
-          _id: product._id,
+          _id: product._id.toString(),
           name: product.name,
           price: product.price,
+          thumbnail: product.thumbnail,
           quantity: quantity,
         });
         let changed = await this.changeCart(cartId, {

@@ -11,6 +11,7 @@ routerCarts.get("/", carts.getAllCarts);
 routerCarts.get("/:id", carts.getCartById);
 routerCarts.get("/user/get", carts.userGetCart);
 routerCarts.post("/", carts.saveCart);
+routerCarts.post("/user", carts.userCreateCart);
 routerCarts.put("/:id", carts.changeCartById);
 routerCarts.put("/:id/products/:productId", carts.addProduct);
 routerCarts.delete("/:id/products/:productId", carts.deleteProduct);

@@ -1,15 +1,17 @@
-<% if (products.lenght > 0) { %>
-<table id="<%= cartId %>" name="cart" className="table">
-  <thead className="thead-dark">
+<% if (products.length > 0) { %>
+<table id="<%= cartId.toString() %>" name="cart" class="table">
+  <thead class="thead-dark">
     <tr>
-      <th className="columnaImagen" scope="col"></th>
+      <th class="columnaImagen" scope="col"></th>
       <th scope="col">Nombre</th>
       <th scope="col">Cantidad</th>
       <th scope="col">Subtotal</th>
       <th scope="col">Quitar</th>
     </tr>
   </thead>
-  <tbody className="tbody">
+  <tbody class="tbody">
+    <% products.forEach(function(product){ %> <%- include("./cartProduct",
+    {product:product}) %> <% }); %>
     <tr>
       <th scope="col"></th>
       <th scope="col"></th>
@@ -17,8 +19,6 @@
       <th scope="col">$</th>
       <th scope="col"></th>
     </tr>
-    <% products.forEach(function(product){ %> <%- include("./cartProduct",
-    {product:product}) %> <% }); %>
   </tbody>
 </table>
 <% } else { %>

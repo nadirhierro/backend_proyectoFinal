@@ -1,12 +1,12 @@
-<tr id="product-<%= product._id %>" className="fila">
-  <th className="cajaImagenTabla" scope="row">
+<tr id="product-<%= product._id %>" class="fila">
+  <th class="cajaImagenTabla" scope="row">
     <img src="<%= product.thumbnail %>" alt="<%= product.name %>" />
   </th>
   <td></td>
   <td><%= product.quantity %></td>
-  <td><%= product.price %></td>
+  <td><%= (product.price * product.quantity) %></td>
   <td>
-    <button id="<%= product._id %>" className="btn" name="deleteProduct">
+    <button id="<%= product._id %>" class="btn" name="deleteProduct">
       Eliminar
     </button>
   </td>

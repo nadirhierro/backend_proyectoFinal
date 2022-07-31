@@ -74,12 +74,10 @@ export default class CartsController {
 
   async saveCart(req, res, next) {
     try {
-      let user = await req.user;
-      let products = req.body;
       let cart = {
-        email: user.email,
-        products: products,
-        address: user.address,
+        email: req.body.email,
+        products: req.body.products,
+        address: req.body.address,
       };
       let saved = await service.saveCart(cart);
       res.json({ cart: saved });
@@ -102,6 +100,26 @@ export default class CartsController {
       } else {
         res.status(200).json({ message: `Cart with id ${id} not found` });
       }
+    } catch (err) {
+      if (err.message.indexOf("Database error") > -1) {
+        res.status(500);
+      } else {
+        res.status(400);
+      }
+      res.json({ error: err.message });
+    }
+  }
+
+  async userCreateCart(req, res, next) {
+    try {
+      let user = await req.user;
+      let cart = {
+        email: user.email,
+        products: [],
+        address: user.address,
+      };
+      let saved = await service.saveCart(cart);
+      res.status(200).json(saved);
     } catch (err) {
       if (err.message.indexOf("Database error") > -1) {
         res.status(500);

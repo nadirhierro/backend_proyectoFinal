@@ -1,0 +1,88 @@
+.tituloFinalizar {
+  padding-top: 1rem;
+  @include fondoVerde;
+  gap: 1rem;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+  h2,
+  h4 {
+    font-weight: bold;
+  }
+}
+.carritoVacio {
+  padding-top: 2rem;
+  @include flexColumn(1rem, center, center);
+  a {
+    @include fondoVerde;
+  }
+}
+
+.carritoYdatos {
+  font-family: $nunito;
+  justify-content: center;
+  .table {
+    border-collapse: separate;
+    border-spacing: 0 2rem;
+    @media (min-width: 768px) {
+      & {
+        width: 80%;
+      }
+    }
+    @media (min-width: 992px) {
+      & {
+        width: 70%;
+      }
+    }
+    @media (min-width: 1200px) {
+      & {
+        width: 60%;
+      }
+    }
+    .columnaImagen {
+      width: 2.3rem;
+      @media (min-width: 576px) {
+        width: 3.8rem;
+      }
+    }
+    th,
+    tr {
+      font-size: 1rem;
+      @media (min-width: 576px) {
+        & {
+          font-size: 0.8rem;
+        }
+      }
+    }
+    td {
+      vertical-align: middle;
+    }
+    .fila {
+      height: 4rem;
+    }
+    .cajaImagenTabla {
+      position: relative;
+      padding-left: 100%;
+      img {
+        @include fotos;
+        min-width: 0.1rem;
+        @media (min-width: 576px) {
+          & {
+            min-width: 2rem;
+          }
+        }
+      }
+    }
+    .total {
+      display: table-row;
+    }
+    .botones {
+      @include flex(0.5rem, flex-start, center);
+    }
+    .botonRestar,
+    .botonSumar,
+    .botonEliminar {
+      cursor: pointer;
+    }
+  }
+}
