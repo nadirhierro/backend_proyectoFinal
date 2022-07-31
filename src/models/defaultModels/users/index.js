@@ -41,7 +41,7 @@ export default class Users {
       surname: required ? Joi.string().required() : Joi.string(),
       alias: required ? Joi.string().required() : Joi.string(),
       address: required ? Joi.string().required() : Joi.string(),
-      phone: required ? Joi.number().required() : Joi.number(),
+      phone: required ? Joi.string().required() : Joi.string(),
       age: required ? Joi.number().required() : Joi.number(),
       avatar: required ? Joi.string().required() : Joi.string(),
       isAdmin: required ? Joi.boolean().required() : Joi.boolean(),

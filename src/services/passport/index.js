@@ -39,7 +39,7 @@ passport.use(
         let phone = req.body.phone;
         let avatar = req.body.avatar;
         let user = await users.getUserByEmail(email);
-        if (user) return done(null, false);
+        if (user) return done(null, false, { message: `Error -- ${err}` });
         let newUser = {
           email,
           password,

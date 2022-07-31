@@ -1,6 +1,11 @@
 <html lang="en">
   <head>
     <%- include("../partials/head"); %>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
   </head>
   <body>
     <header><%- include("../partials/headerAuth"); %></header>
@@ -110,6 +115,8 @@
                 type="tel"
                 required
               />
+              <div class="alert alert-error" style="display: none"></div>
+              <div class="alert alert-info" style="display: none"></div>
             </div>
             <div class="mb-3">
               <label for="avatar" class="form-label">Avatar</label>
@@ -127,6 +134,33 @@
         </div>
       </div>
     </main>
+    <script>
+      const phoneInputField = document.querySelector("#phone");
+      const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+      });
+    </script>
+    <script>
+      const info = document.querySelector(".alert-info");
+      const error = document.querySelector(".alert-error");
+
+      phoneInputField.addEventListener("change", (event) => {
+        event.preventDefault();
+        const phoneNumber = phoneInput.getNumber();
+
+        info.style.display = "none";
+        error.style.display = "none";
+
+        if (phoneInput.isValidNumber()) {
+          info.style.display = "";
+          info.innerHTML = `Phone number in E.164 format: <strong>${phoneNumber}</strong>`;
+        } else {
+          error.style.display = "";
+          error.innerHTML = `Invalid phone number.`;
+        }
+      });
+    </script>
     <script>
       let password = document.getElementById("password");
       let confirm_password = document.getElementById("confirm_password");
