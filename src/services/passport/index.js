@@ -29,7 +29,7 @@ passport.use(
     { passReqToCallback: true },
     async (req, username, password, done) => {
       try {
-        let email = req.body.email;
+        let email = req.body.username;
         let password = encrypt(req.body.password);
         let name = req.body.name;
         let surname = req.body.surname;

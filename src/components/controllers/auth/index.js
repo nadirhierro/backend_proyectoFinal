@@ -1,5 +1,4 @@
 import { passport } from "../../../services/passport/index.js";
-import { upload } from "../../../utils/multer/index.js";
 
 export default class AuthController {
   constructor() {}
@@ -81,9 +80,5 @@ export default class AuthController {
         return res.status(200).redirect("/products");
       });
     })(req, res, next);
-  }
-
-  uploadAvatar() {
-    upload.single("avatar");
   }
 }

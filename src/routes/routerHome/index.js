@@ -3,6 +3,7 @@ import routerProducts from "./routerProducts/index.js";
 import routerCart from "./routerCart/index.js";
 import routerChat from "./routerChat/index.js";
 import AuthController from "../../components/controllers/auth/index.js";
+import { upload } from "../../utils/multer/index.js";
 
 const { Router } = express;
 
@@ -22,7 +23,7 @@ routerHome.post("/login", auth.makeLogin);
 
 routerHome.get("/logout", auth.makeLogout);
 
-routerHome.post("/signup", auth.uploadAvatar, auth.makeSignup);
+routerHome.post("/signup", upload.single("avatar"), auth.makeSignup);
 
 routerHome.use("/products", auth.isAuth, routerProducts);
 

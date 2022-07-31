@@ -12,9 +12,9 @@
           <form
             id="signup"
             action="/signup"
-            method="post"
+            method="POST"
             role="form"
-            autocomplete="off"
+            autocomplete="on"
             enctype="multipart/form-data"
             name="signup"
           >
@@ -44,6 +44,26 @@
                 class="form-control"
                 id="name"
                 name="name"
+                type="text"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="surname" class="form-label">Apellido</label>
+              <input
+                class="form-control"
+                id="surname"
+                name="surname"
+                type="text"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="alias" class="form-label">Alias</label>
+              <input
+                class="form-control"
+                id="alias"
+                name="alias"
                 type="text"
                 required
               />
@@ -84,16 +104,6 @@
                 class="form-control"
                 id="avatar"
                 name="avatar"
-                type="text"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label for="avatarFile" class="form-label">Archivo avatar</label>
-              <input
-                class="form-control"
-                id="avatarFile"
-                name="avatar"
                 type="file"
               />
             </div>
@@ -102,19 +112,5 @@
         </div>
       </div>
     </main>
-    <script>
-      var input = document.getElementById("phone");
-      window.intlTelInput(input, {
-        initialCountry: "auto",
-        geoIpLookup: function (success, failure) {
-          $.get("https://ipinfo.io", function () {}, "jsonp").always(function (
-            resp
-          ) {
-            var countryCode = resp && resp.country ? resp.country : "us";
-            success(countryCode);
-          });
-        },
-      });
-    </script>
   </body>
 </html>
