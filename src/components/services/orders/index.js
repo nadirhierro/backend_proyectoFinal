@@ -30,7 +30,7 @@ export default class apiOrders {
 
   async saveOrder(order) {
     try {
-      this.getValidation(order, required);
+      this.getValidation(order, true);
       let saved = await this.db.save(order);
       return saved;
     } catch (err) {

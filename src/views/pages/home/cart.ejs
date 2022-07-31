@@ -4,9 +4,9 @@
   </head>
   <body>
     <header><%- include("../../partials/headerUsers"); %></header>
-    <main class="main">
+    <main class="main" id="main">
       <%- include("../../partials/hero"); %> <% if (cartId) { %>
-      <div class="container-fluid cart">
+      <div class="container-fluid cart" id="cart">
         <div class="row justify-content-center tituloFinalizar">
           <h2 class="col-12 text-center">¡Últimos pasos!</h2>
           <h4 class="col-12 text-center">Chequeá tu carrito...</h4>
@@ -20,6 +20,7 @@
         </div>
       </div>
     </main>
+    <script src="/assets/js/orders.js"></script>
     <script src="/assets/js/cart.js"></script>
   </body>
 </html>

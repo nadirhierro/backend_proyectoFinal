@@ -19,12 +19,8 @@ export default class OrdersController {
   async saveOrder(req, res, next) {
     try {
       let user = await req.user;
-      let products = req.body;
-      let order = {
-        email: user.email,
-        state: "in process",
-        products: products,
-      };
+      let order = req.body;
+      console.log(order);
       let saved = await service.saveOrder(order);
       if (saved) {
         let mailToUser = await mailer.newOrder(user, products);
