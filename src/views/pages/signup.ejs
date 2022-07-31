@@ -39,6 +39,19 @@
               />
             </div>
             <div class="mb-3">
+              <label for="confirm_password" class="form-label"
+                >Confirmar contraseña</label
+              >
+              <input
+                type="password"
+                id="confirm_password"
+                name="password"
+                class="form-control"
+                required
+              />
+              <span id="message"></span>
+            </div>
+            <div class="mb-3">
               <label for="name" class="form-label">Nombre</label>
               <input
                 class="form-control"
@@ -112,5 +125,23 @@
         </div>
       </div>
     </main>
+    <script>
+      let password = document.getElementById("password");
+      let confirm_password = document.getElementById("confirm_password");
+      let message = document.getElementById("message");
+
+      function validatePassword() {
+        if (password.value != confirm_password.value) {
+          message.innerHTML = "Las contraseñas no coinciden";
+          message.style.color = "red";
+        } else {
+          message.innerHTML = "Las contraseñas coinciden";
+          message.style.color = "rgb(169, 172, 131)";
+        }
+      }
+
+      password.onchange = validatePassword;
+      confirm_password.onkeyup = validatePassword;
+    </script>
   </body>
 </html>
