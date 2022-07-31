@@ -55,7 +55,7 @@ export default class MessagesController {
 
   async adminMessage(req, res, next) {
     try {
-      let type = "admin";
+      let type = "system";
       let data = req.body;
       let saved = await service.saveMessage({
         email: data.email,
