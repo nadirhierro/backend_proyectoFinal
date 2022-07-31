@@ -14,7 +14,7 @@ routerProducts.get("/", products.getAllProducts);
 routerProducts.get("/:id", products.getProductById);
 routerProducts.get("/category/:categoryId", products.getProductsByCategory);
 routerProducts.post("/", authenticator.isAdmin, products.saveProduct);
-routerProducts.put("/:id", products.changeProduct);
+routerProducts.put("/:id", authenticator.isAdmin, products.changeProduct);
 routerProducts.delete("/", authenticator.isAdmin, products.deleteAllProducts);
 routerProducts.delete(
   "/:id",
