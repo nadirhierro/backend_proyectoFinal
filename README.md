@@ -15,7 +15,7 @@ _Tutor: Christian Sosa_
 
 ## Descarga
 
-- [Descargar Zip](https://www.github.com/nadirhierro)
+- [Descargar Zip](https://github.com/nadirhierro/backend_proyectoFinal/archive/refs/heads/master.zip)
 
   ó
 
