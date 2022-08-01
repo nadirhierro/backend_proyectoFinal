@@ -15,4 +15,15 @@ export default class fileDaoOrders extends fileContainer {
     }
     return instance;
   }
+  
+  async saveOrder(order){
+    try {
+      let finalOrder = {...order, state: "generated"};
+      let saved = await this.save(finalOrder);
+      return saved;
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
+    }
+  }
 }
