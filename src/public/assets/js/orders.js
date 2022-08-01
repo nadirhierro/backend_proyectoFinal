@@ -12,7 +12,6 @@ sendOrder.addEventListener("click", (event) => {
       });
 
       let order = {
-        state: "generated",
         email: cart.email,
         products: cart.products,
         address: cart.address,
