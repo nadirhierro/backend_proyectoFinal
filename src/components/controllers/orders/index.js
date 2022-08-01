@@ -20,8 +20,7 @@ export default class OrdersController {
     try {
       let user = await req.user;
       let order = req.body;
-      let orderFinal = {...order, state:"generated"};
-      let saved = await service.saveOrder(orderFinal);
+      let saved = await service.saveOrder(order);
       if (saved) {
         let mailToUser = await mailer.newOrder(user, products);
         let mailToAdmin = await mailer.newOrderToAdmin(user, products);
