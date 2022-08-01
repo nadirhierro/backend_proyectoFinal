@@ -26,4 +26,5 @@ export default class mongodbDaoOrders extends mongodbContainer {
       this.logger.logDatabaseError(err);
       throw new Error("Database Error");
     }
+  }
 }
