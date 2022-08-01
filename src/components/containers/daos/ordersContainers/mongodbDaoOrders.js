@@ -16,4 +16,14 @@ export default class mongodbDaoOrders extends mongodbContainer {
     }
     return instance;
   }
+  
+  async saveOrder(order){
+    try {
+      let finalOrder = {...order, status: "generated"};
+      let saved = await this.save(finalOrder);
+      return saved;
+    } catch (err) {
+      this.logger.logDatabaseError(err);
+      throw new Error("Database Error");
+    }
 }
