@@ -6,7 +6,7 @@ export default class Products {
     category,
     subcategory,
     brand,
-    title,
+    name,
     price,
     featured,
     thumbnail,
@@ -16,7 +16,7 @@ export default class Products {
     this.category = category;
     this.subcategory = subcategory;
     this.brand = brand;
-    this.title = title;
+    this.name = name;
     this.price = price;
     this.featured = featured;
     this.thumbnail = thumbnail;
