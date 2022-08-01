@@ -304,8 +304,8 @@ Este servidor acepta los argumentos
 | `order`| `object` | **Required**. Objeto orden       |
 | `order.email`| `email` | **Required**. Email del carrito       |
 | `order.address`| `string` | **Required**. Dirección de envío       |
-| `order.state`| `string` | **Required**. Estado de la órdern, _generated_ ó _in process_       |
 | `order.products`| `Array` | **Required**. Array de productos       |
+| `product`| `object` | **Required**. Array de productos       |
 | `product._id`| `ObjectId` | **Required**. Id del producto|
 | `product.name`| `string` | **Required**. Nombre del producto       |
 | `product.price`| `number` | **Required**. Precio del producto       |
