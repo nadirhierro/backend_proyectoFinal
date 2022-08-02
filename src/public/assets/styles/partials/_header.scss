@@ -27,6 +27,9 @@
         align-items: center;
       }
       li {
+        .dropdown-menu {
+          background-color: $verde;
+        }
         a {
           font-size: 18px;
           color: $amarillo;
