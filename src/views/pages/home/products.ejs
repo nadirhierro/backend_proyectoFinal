@@ -11,12 +11,14 @@
         <h2 class="text-center"><%= category %></h2>
         <% } else { %>
         <h2 class="text-center">Todos los productos</h2>
-        <% } %>
+        <% } %> <% if ((products.length > 0)) { %>
         <div class="col grillaProductos">
-          <% if ((products)) { %> <%-
-          include("../../partials/products/productGrid", {products:products});%>
-          <% }%>
+          <%- include("../../partials/products/productGrid",
+          {products:products});%>
         </div>
+        <% } else if (category) { %>
+        <h2 class="text-center">No hay productos para la categoría</h2>
+        <% } %>
       </div>
     </main>
     <%- include("../../partials/bootstrapScripts") %>
