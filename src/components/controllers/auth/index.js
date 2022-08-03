@@ -56,7 +56,7 @@ export default class AuthController {
         return next(err);
       }
       if (!user)
-        return res.render("pages/fails/faillogin", { message: info.message });
+        return res.render("pages/fails/failLogin", { message: info.message });
       req.login(user, function (err) {
         if (err) {
           return next(err);
@@ -72,7 +72,7 @@ export default class AuthController {
         return next(err);
       }
       if (!user)
-        return res.render("pages/fails/failsignup", { message: info.message });
+        return res.render("pages/fails/failSignup", { message: info.message });
       req.login(user, function (err) {
         if (err) {
           return next(err);
