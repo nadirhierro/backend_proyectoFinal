@@ -44,7 +44,8 @@ export default class mongodbContainer {
         { ...obj, timestamp: moment().format("DD/MM/YYYY HH:MM:SS") }
       );
       if (res.modifiedCount > 0) {
-        return true;
+        let newCart = await this.getById(id);
+        return newCart;
       } else {
         return false;
       }
